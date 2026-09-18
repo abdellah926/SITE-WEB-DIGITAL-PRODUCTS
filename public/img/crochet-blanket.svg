@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img">
+  <title>Crochet afghan blanket</title>
+  <rect width="600" height="450" fill="#f5f0e8"/>
+  <rect x="90" y="80" width="420" height="300" rx="18" fill="#b45309"/>
+  <g fill="#fbbf24">
+    <circle cx="150" cy="140" r="22"/><circle cx="240" cy="140" r="22"/><circle cx="330" cy="140" r="22"/><circle cx="420" cy="140" r="22"/>
+    <circle cx="150" cy="215" r="22"/><circle cx="330" cy="215" r="22"/>
+    <circle cx="150" cy="290" r="22"/><circle cx="240" cy="290" r="22"/><circle cx="330" cy="290" r="22"/><circle cx="420" cy="290" r="22"/>
+  </g>
+</svg>

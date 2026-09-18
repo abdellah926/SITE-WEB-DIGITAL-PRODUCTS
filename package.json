@@ -1,0 +1,40 @@
+{
+  "name": "crochet-store",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "selfcheck": "tsx scripts/selfcheck.ts",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:seed": "tsx src/lib/db/seed.ts"
+  },
+  "dependencies": {
+    "@vercel/analytics": "2.0.1",
+    "drizzle-orm": "0.45.2",
+    "lucide-react": "1.47.0",
+    "next": "16.3.5",
+    "next-intl": "4.14.5",
+    "pg": "8.23.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "20.19.0",
+    "@types/pg": "8.23.1",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.0",
+    "drizzle-kit": "0.31.10",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.5",
+    "tailwindcss": "4.3.3",
+    "tsx": "4.20.0",
+    "typescript": "5.9.3"
+  }
+}

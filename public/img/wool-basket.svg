@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img">
+  <title>Wool storage basket</title>
+  <rect width="600" height="450" fill="#f8f3ec"/>
+  <path d="M150 170 h300 v140 a40 40 0 0 1 -40 40 h-220 a40 40 0 0 1 -40 -40 z" fill="#b45309"/>
+  <path d="M140 170 h320 l-15 120 a50 50 0 0 1 -50 46 h-190 a50 50 0 0 1 -50 -46 z" fill="#92400e"/>
+  <g stroke="#fde68a" stroke-width="3"><path d="M180 210 h240"/><path d="M175 250 h250"/><path d="M170 290 h260"/></g>
+</svg>

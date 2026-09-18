@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img">
+  <title>Basic crochet stitches</title>
+  <rect width="600" height="450" fill="#faf6ee"/>
+  <path d="M180 120 q0 -50 60 -50 q-10 20 5 40 l-15 -5 z" fill="#78716c"/>
+  <path d="M180 120 v260 l-40 40" stroke="#78716c" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <g stroke="#b45309" stroke-width="10" fill="none" stroke-linecap="round">
+    <path d="M230 120 l45 0"/><path d="M275 120 l20 14 -20 14"/><path d="M275 148 l45 0"/><path d="M320 148 l20 14 -20 14"/><path d="M320 176 l45 0"/><path d="M365 176 l20 14 -20 14"/>
+  </g>
+  <g fill="#d97706"><circle cx="275" cy="120" r="10"/><circle cx="320" cy="148" r="10"/><circle cx="365" cy="176" r="10"/></g>
+</svg>

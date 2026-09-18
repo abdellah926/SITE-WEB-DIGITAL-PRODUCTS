@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img">
+  <title>Crochet hook and yarn</title>
+  <rect width="600" height="450" fill="#f9f4ec"/>
+  <circle cx="300" cy="210" r="110" fill="#d97706"/>
+  <circle cx="300" cy="210" r="70" fill="#b45309"/>
+  <circle cx="300" cy="210" r="32" fill="#fbbf24"/>
+  <path d="M300 210 l150 -130" stroke="#78716c" stroke-width="12" stroke-linecap="round"/>
+  <path d="M450 80 q50 -40 70 10 q-30 20 -55 5 z" fill="#57534e"/>
+</svg>

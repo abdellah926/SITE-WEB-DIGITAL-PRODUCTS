@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img">
+  <title>Handmade wool scarf</title>
+  <rect width="600" height="450" fill="#f7f2ea"/>
+  <path d="M150 120 q150 -30 300 0 q20 40 10 90 q-10 50 0 100 q10 40 -10 80 q-150 30 -300 0 q-20 -40 -10 -80 q10 -50 0 -100 q-10 -50 10 -90 z" fill="#d97706"/>
+  <g stroke="#fef3c7" stroke-width="4" stroke-linecap="round">
+    <path d="M180 160 h240"/><path d="M180 210 h240"/><path d="M180 260 h240"/><path d="M180 310 h240"/><path d="M170 145 q-20 80 0 160"/><path d="M430 145 q20 80 0 160"/>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img">
+  <title>Amigurumi doll</title>
+  <rect width="600" height="450" fill="#f9f4ec"/>
+  <circle cx="300" cy="180" r="90" fill="#fde68a"/>
+  <circle cx="300" cy="330" r="70" fill="#b45309"/>
+  <circle cx="290" cy="150" r="8" fill="#292524"/>
+  <circle cx="330" cy="150" r="8" fill="#292524"/>
+  <path d="M285 190 q15 12 30 0" stroke="#292524" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <rect x="170" y="120" width="26" height="70" rx="13" fill="#b45309"/>
+  <rect x="404" y="120" width="26" height="70" rx="13" fill="#b45309"/>
+</svg>
