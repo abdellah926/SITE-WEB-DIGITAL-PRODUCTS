@@ -80,7 +80,7 @@ check("orders: rib IBAN present", rib.iban.startsWith("MA") && rib.iban.length >
 check("orders: rib SWIFT present", /^[A-Z]{8,11}$/.test(rib.swift));
 const prevPhone = process.env.NEXT_PUBLIC_SHOP_PHONE;
 process.env.NEXT_PUBLIC_SHOP_PHONE = "212600000000";
-const wa = buildRibWhatsappUrl("350 MAD", "1234-5678", "ar");
+const wa = buildRibWhatsappUrl("350 MAD", "1234-5678", "ar", "Pattern X");
 if (prevPhone === undefined) delete process.env.NEXT_PUBLIC_SHOP_PHONE;
 else process.env.NEXT_PUBLIC_SHOP_PHONE = prevPhone;
 check("orders: wa confirm link shape", /^https:\/\/wa\.me\/\d+/.test(wa) && wa.includes("text="));

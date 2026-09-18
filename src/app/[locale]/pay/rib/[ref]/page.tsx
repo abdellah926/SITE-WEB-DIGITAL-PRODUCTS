@@ -1,6 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { getOrderByRef } from "@/features/orders/queries";
+import { getProductById } from "@/features/catalog/queries";
 import { ribConfig, buildRibWhatsappUrl } from "@/features/orders/payment";
 import { formatMAD } from "@/lib/format";
 import { CopyButton } from "@/components/copy-button";
@@ -23,6 +24,9 @@ export default async function RibPayPage({
   const item = order.items[0];
   const rib = ribConfig();
   const priceText = formatMAD(order.totalMAD, locale as "ar" | "fr");
+  const product = item?.productId ? await getProductById(item.productId) : null;
+  const productTitle =
+    product ? (locale === "fr" ? product.titleFr : product.title) : item?.title ?? "";
 
   return (
     <div className="mx-auto flex max-w-2xl flex-col gap-6 px-4 py-10">
@@ -66,9 +70,9 @@ export default async function RibPayPage({
             </div>
           ) : null}
         </div>
-        {item ? (
+        {productTitle ? (
           <p className="text-xs text-stone-500">
-            {item.title} — {priceText}
+            {productTitle} — {priceText}
           </p>
         ) : null}
       </div>
@@ -77,7 +81,7 @@ export default async function RibPayPage({
         <p className="font-semibold text-green-800">{t("ribStep2Title")}</p>
         <p className="text-sm text-green-700">{t("ribStep2Body")}</p>
         <a
-          href={buildRibWhatsappUrl(priceText, order.ref, locale)}
+          href={buildRibWhatsappUrl(priceText, order.ref, locale, productTitle)}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex w-fit items-center gap-2 rounded-full bg-green-600 px-6 py-3 font-semibold text-white hover:bg-green-700"

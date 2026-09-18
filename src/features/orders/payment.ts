@@ -21,13 +21,18 @@ export function ribConfig(): RibConfig {
   };
 }
 
-export function buildRibWhatsappUrl(priceText: string, orderRef: string, locale: string): string {
+export function buildRibWhatsappUrl(
+  priceText: string,
+  orderRef: string,
+  locale: string,
+  title: string
+): string {
   const { iban, phone } = ribConfig();
   const digits = String(phone).replace(/\D/g, "").replace(/^0+/, "");
   const msg =
     locale === "ar"
-      ? `مرحبا، أؤكد تحويلي البنكي للمنتج (${priceText}) — مرجع الطلب: ${orderRef}. الحساب المستلم: ${iban}.`
-      : `Bonjour, je confirme mon virement bancaire (${priceText}) — référence : ${orderRef}. Compte bénéficiaire : ${iban}.`;
+      ? `مرحبا، أؤكد تحويلي البنكي للمنتج «${title}» — الثمن: ${priceText} — مرجع الطلب: ${orderRef}. الحساب المستلم: ${iban}.`
+      : `Bonjour, je confirme mon virement bancaire pour le produit « ${title} » — Montant : ${priceText} — Référence : ${orderRef}. Compte bénéficiaire : ${iban}.`;
   return `https://wa.me/${digits}?text=${encodeURIComponent(msg)}`;
 }
 

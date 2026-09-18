@@ -57,6 +57,7 @@ async function main() {
   check("e2e: rib pay page 200", ribPage.status === 200);
   check("e2e: rib page shows IBAN", ribHtml.includes("MA64 2300 1057 6579 1211 0187 0061"));
   check("e2e: rib page shows RIB", ribHtml.includes("230 010 5765791211018700 61"));
+  check("e2e: rib page shows product title", ribHtml.includes(product.title));
   check("e2e: rib page has wa.me confirm link", ribHtml.includes("wa.me/"));
   check("e2e: rib page noindex", ribHtml.toLowerCase().includes("noindex"));
   const robotsRes = await fetch(`${BASE}/robots.txt`);
