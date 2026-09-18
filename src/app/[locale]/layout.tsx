@@ -25,9 +25,9 @@ export default async function LocaleLayout({
     <html lang={locale} dir={dir} className="h-full">
       <body className="flex min-h-dvh flex-col bg-stone-50 text-stone-900">
         <NextIntlClientProvider messages={messages}>
-          <SiteHeader locale={locale as "ar" | "fr"} />
+          <SiteHeader locale={locale as "ar" | "fr" | "en"} />
           <main className="flex-1">{children}</main>
-          <SiteFooter locale={locale as "ar" | "fr"} />
+          <SiteFooter locale={locale as "ar" | "fr" | "en"} />
         </NextIntlClientProvider>
         <Analytics />
       </body>

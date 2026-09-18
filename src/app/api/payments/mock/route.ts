@@ -4,7 +4,7 @@ import { getOrderByRef, markPaid } from "@/features/orders/queries";
 export async function POST(req: NextRequest) {
   const form = await req.formData();
   const ref = String(form.get("ref") ?? "");
-  const locale = form.get("locale") === "fr" ? "fr" : "ar";
+  const locale = ["fr", "en"].includes(String(form.get("locale") ?? "ar")) ? String(form.get("locale")) : "ar";
   const order = await getOrderByRef(ref);
   if (!order || order.provider !== "mock") {
     return NextResponse.json({ status: "error" }, { status: 400 });

@@ -13,7 +13,7 @@ export interface BuyState {
 const schema = z.object({
   name: z.string().trim().min(2, "errorRequired").max(120),
   email: z.string().trim().email("errorInvalidEmail").max(200),
-  locale: z.enum(["ar", "fr"]),
+  locale: z.enum(["ar", "fr", "en"]),
 });
 
 export async function buyProduct(

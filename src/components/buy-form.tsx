@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { useTranslations } from "next-intl";
+import type { Locale } from "@/lib/i18n/routing";
 import { buyProduct } from "@/features/orders/actions";
 
 export function BuyForm({
@@ -9,7 +10,7 @@ export function BuyForm({
   slug,
   priceText,
 }: {
-  locale: "ar" | "fr";
+  locale: Locale;
   slug: string;
   priceText: string;
 }) {

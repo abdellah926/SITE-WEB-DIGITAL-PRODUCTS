@@ -38,7 +38,7 @@ async function main() {
   const ribOrder = await createOrder({
     name: "Test Buyer RIB",
     email: "rib@test.co",
-    locale: "ar",
+    locale: "en",
     totalMAD: product.priceMAD,
     provider: "rib",
     item: {
@@ -52,18 +52,27 @@ async function main() {
     console.log("FAIL  e2e: rib createOrder returned null (DB down?)");
     process.exit(1);
   }
-  const ribPage = await fetch(`${BASE}/ar/pay/rib/${ribOrder.ref}`);
+  const ribPage = await fetch(`${BASE}/en/pay/rib/${ribOrder.ref}`);
   const ribHtml = await ribPage.text();
   check("e2e: rib pay page 200", ribPage.status === 200);
   check("e2e: rib page shows IBAN", ribHtml.includes("MA64 2300 1057 6579 1211 0187 0061"));
   check("e2e: rib page shows RIB", ribHtml.includes("230 010 5765791211018700 61"));
-  check("e2e: rib page shows product title", ribHtml.includes(product.title));
+  check("e2e: rib page shows product title", ribHtml.includes(product.titleFr || product.title));
   check("e2e: rib page shows registered buyer name", ribHtml.includes("Test Buyer RIB"));
+  check("e2e: rib page english heading", ribHtml.includes("Bank transfer payment"));
   check("e2e: rib page has wa.me confirm link", ribHtml.includes("wa.me/"));
   check("e2e: rib page noindex", ribHtml.toLowerCase().includes("noindex"));
   const robotsRes = await fetch(`${BASE}/robots.txt`);
   const robotsText = await robotsRes.text();
   check("e2e: robots disallows /pay", robotsText.includes("/pay/"));
+
+  // english storefront renders
+  const enHome = await fetch(`${BASE}/en`);
+  check("e2e: english home 200", enHome.status === 200);
+  const enProd = await fetch(`${BASE}/en/products`);
+  await enProd.text();
+  check("e2e: english products 200", enProd.status === 200);
+  check("e2e: english buy label", (await (await fetch(`${BASE}/en/products/crochet-afghan-blanket`)).text()).includes("Buy now"));
 
   // order starts pending
   let o = await getOrderByRef(order.ref);

@@ -9,7 +9,7 @@ export type OrderWithItems = Order & { items: OrderItem[] };
 export async function createOrder(args: {
   name: string;
   email: string;
-  locale: "ar" | "fr";
+  locale: "ar" | "fr" | "en";
   totalMAD: number;
   provider: "cmi" | "mock" | "rib";
   item: { productId: number; title: string; priceMAD: number; fileKey: string };

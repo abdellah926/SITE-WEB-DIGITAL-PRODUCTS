@@ -220,3 +220,13 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 
 ### STILL PENDING (operator)
 - `RIB_HOLDER` (account holder name) not set — add on Vercel for clarity to buyers (page hides the row while empty).
+
+---
+
+## [ENGLISH LOCALE (ar/fr/en) — v2.2 · 2026-09-18]
+
+- `next-intl` routing now `["ar","fr","en"]` (default still `ar`); new `src/lib/i18n/messages/en.ts` (full mirror of the Messages shape: meta/nav/home/product/order incl. rib flow/admin/article/footer).
+- `LocaleSwitch` upgraded from a 2-way toggle to a 3-language switcher (العربية / Français / English), stores `NEXT_LOCALE` cookie; root `/` honors `ar|fr|en`.
+- `formatMAD` maps en→`en` Intl tag (`MAD 350`); new `localTitle(locale, ar, fr)` helper used across product-card/gallery/detail/buy/rib/admin/forms — **English falls back to the French (Roman-script) product content** (schema only stores title/description in ar+fr; documented content limitation).
+- WhatsApp confirm message, CMI `lang`, mock route locale, admin login redirects, order creation, sitemap — all accept `en`.
+- e2e now exercises `/en` + an English rib order (heading "Bank transfer payment"); production E2E **38/38 PASS**. Gates (tsc/eslint/build/selfcheck) green. Deployed live.

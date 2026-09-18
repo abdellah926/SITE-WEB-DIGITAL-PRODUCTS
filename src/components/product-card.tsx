@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { formatMAD } from "@/lib/format";
+import { formatMAD, localTitle } from "@/lib/format";
 import type { Product } from "@/lib/db/schema";
+import type { Locale } from "@/lib/i18n/routing";
 import { WatermarkedImage } from "./watermarked-image";
 
-export function ProductCard({ locale, product }: { locale: "ar" | "fr"; product: Product }) {
-  const title = locale === "fr" ? product.titleFr : product.title;
+export function ProductCard({ locale, product }: { locale: Locale; product: Product }) {
+  const title = localTitle(locale, product.title, product.titleFr);
   return (
     <Link
       href={`/${locale}/products/${product.slug}`}

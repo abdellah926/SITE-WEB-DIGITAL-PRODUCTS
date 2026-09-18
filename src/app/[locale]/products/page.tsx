@@ -7,18 +7,14 @@ import {
   listProductsByCategory,
 } from "@/features/catalog/queries";
 import { ProductCard } from "@/components/product-card";
+import { localTitle } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateMetadata(): Promise<Metadata> {
   const [t, mt] = await Promise.all([getTranslations("nav"), getTranslations("meta")]);
   return {
-    title: `${locale === "ar" ? t("products") : "Produits"} | ${mt("siteName")}`,
+    title: `${t("products")} | ${mt("siteName")}`,
     description: mt("description"),
     keywords: mt("keywords"),
   };
@@ -62,7 +58,7 @@ export default async function ProductsPage({
               : "border-amber-700 bg-amber-700 text-white")
           }
         >
-          {locale === "ar" ? "الكل" : "Tous"}
+          {locale === "ar" ? "الكل" : locale === "fr" ? "Tous" : "All"}
         </Link>
         {categories.map((c) => (
           <Link
@@ -75,7 +71,7 @@ export default async function ProductsPage({
                 : "border-stone-300 text-stone-600 hover:border-amber-700")
             }
           >
-            {locale === "fr" ? c.nameFr : c.name}
+            {localTitle(locale, c.name, c.nameFr)}
           </Link>
         ))}
       </nav>
@@ -83,7 +79,7 @@ export default async function ProductsPage({
       {products.length > 0 ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {products.map((p) => (
-            <ProductCard key={p.id} locale={locale as "ar" | "fr"} product={p} />
+            <ProductCard key={p.id} locale={locale as "ar" | "fr" | "en"} product={p} />
           ))}
         </div>
       ) : (

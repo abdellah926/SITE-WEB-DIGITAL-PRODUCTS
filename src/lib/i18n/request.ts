@@ -2,6 +2,7 @@ import { getRequestConfig } from "next-intl/server";
 import { routing } from "./routing";
 import messagesAr from "./messages/ar";
 import messagesFr from "./messages/fr";
+import messagesEn from "./messages/en";
 
 export default getRequestConfig(async ({ requestLocale }) => {
   const requested = await requestLocale;
@@ -12,6 +13,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   return {
     locale,
-    messages: locale === "fr" ? messagesFr : messagesAr,
+    messages:
+      locale === "ar" ? messagesAr : locale === "fr" ? messagesFr : messagesEn,
   };
 });

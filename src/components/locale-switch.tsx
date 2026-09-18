@@ -1,25 +1,40 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
+import { routing, type Locale } from "@/lib/i18n/routing";
 
-export function LocaleSwitch({ locale }: { locale: "ar" | "fr" }) {
+const LABELS: Record<Locale, string> = {
+  ar: "العربية",
+  fr: "Français",
+  en: "English",
+};
+
+function remember(next: Locale) {
+  document.cookie = `NEXT_LOCALE=${next}; path=/; max-age=31536000; samesite=lax`;
+}
+
+export function LocaleSwitch({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const router = useRouter();
-  const other = locale === "ar" ? "fr" : "ar";
-  const label = other === "ar" ? "العربية" : "Français";
+  const others = routing.locales.filter((l) => l !== locale);
 
-  function go() {
-    const next = pathname.replace(/^\/(ar|fr)/, `/${other}`);
-    document.cookie = `NEXT_LOCALE=${other}; path=/; max-age=31536000; samesite=lax`;
-    router.push(next);
+  function go(next: Locale) {
+    const path = pathname.replace(/^\/(ar|fr|en)/, `/${next}`);
+    remember(next);
+    router.push(path);
   }
 
   return (
-    <button
-      onClick={go}
-      className="rounded-md border border-stone-300 px-3 py-1.5 text-sm text-stone-700 hover:border-amber-700 hover:text-amber-800"
-    >
-      {label}
-    </button>
+    <div className="flex items-center gap-1 rounded-md border border-stone-300 px-1 py-1">
+      {others.map((l) => (
+        <button
+          key={l}
+          onClick={() => go(l)}
+          className="rounded px-2 py-0.5 text-sm text-stone-600 hover:bg-amber-50 hover:text-amber-800"
+        >
+          {LABELS[l]}
+        </button>
+      ))}
+    </div>
   );
 }

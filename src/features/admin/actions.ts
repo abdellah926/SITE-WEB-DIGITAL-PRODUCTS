@@ -105,8 +105,9 @@ export async function loginAction(
     path: "/",
     maxAge: 60 * 60,
   });
+  const okLocale = ["ar", "fr", "en"].includes(locale) ? locale : "ar";
   log("info", "admin logged in");
-  redirect(`/${locale === "fr" ? "fr" : "ar"}/admin`);
+  redirect(`/${okLocale}/admin`);
 }
 
 export async function logoutAction(): Promise<void> {
@@ -121,7 +122,9 @@ export async function markOrderPaidAction(formData: FormData): Promise<void> {
   const g = await guard();
   if (g.error) redirect("/ar/admin/login");
   const id = String(formData.get("id") ?? "");
-  const locale = formData.get("locale") === "fr" ? "fr" : "ar";
+  const locale = ["ar", "fr", "en"].includes(String(formData.get("locale") ?? "ar"))
+    ? String(formData.get("locale"))
+    : "ar";
   if (/^\d+$/.test(id)) {
     const ok = await markPaid(Number(id), "manual-admin");
     if (ok) {

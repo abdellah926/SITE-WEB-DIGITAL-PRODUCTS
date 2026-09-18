@@ -66,7 +66,7 @@ export default async function AdminOrdersPage({
                   <td className="px-4 py-3 text-stone-700">{o.name}</td>
                   <td className="px-4 py-3 text-stone-500">{o.email}</td>
                   <td className="px-4 py-3 font-semibold text-amber-800">
-                    {formatMAD(o.totalMAD, locale as "ar" | "fr")}
+                    {formatMAD(o.totalMAD, locale)}
                   </td>
                   <td className="px-4 py-3">
                     <span className={statusBadge(o.status)}>{o.status}</span>

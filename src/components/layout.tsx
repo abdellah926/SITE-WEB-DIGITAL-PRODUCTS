@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import type { Locale } from "@/lib/i18n/routing";
 import { LocaleSwitch } from "./locale-switch";
 
-export async function SiteHeader({ locale }: { locale: "ar" | "fr" }) {
+export async function SiteHeader({ locale }: { locale: Locale }) {
   const t = await getTranslations("nav");
   const links = [
     { href: `/${locale}`, label: t("home") },
@@ -29,7 +30,7 @@ export async function SiteHeader({ locale }: { locale: "ar" | "fr" }) {
   );
 }
 
-export async function SiteFooter({}: { locale: "ar" | "fr" }) {
+export async function SiteFooter({}: { locale: Locale }) {
   const t = await getTranslations("footer");
   return (
     <footer className="border-t border-stone-200 bg-white py-6">

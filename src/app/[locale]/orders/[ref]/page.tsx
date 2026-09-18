@@ -44,7 +44,7 @@ export default async function OrderPage({
           {item ? (
             <div className="flex flex-col gap-2">
               <p className="font-medium text-stone-900">{item.title}</p>
-              <p className="font-bold text-amber-800">{formatMAD(item.priceMAD, locale as "ar" | "fr")}</p>
+              <p className="font-bold text-amber-800">{formatMAD(item.priceMAD, locale)}</p>
             </div>
           ) : null}
           <a

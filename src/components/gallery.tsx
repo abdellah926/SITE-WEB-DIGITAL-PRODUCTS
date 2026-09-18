@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import type { Product } from "@/lib/db/schema";
+import type { Locale } from "@/lib/i18n/routing";
+import { localTitle } from "@/lib/format";
 import { WatermarkedImage } from "./watermarked-image";
 
 type Cell = { image: string; slug: string | null; big?: boolean };
@@ -18,7 +20,7 @@ export async function GalleryMontage({
   locale,
   products,
 }: {
-  locale: "ar" | "fr";
+  locale: Locale;
   products: Product[];
 }) {
   const [t, mt] = await Promise.all([getTranslations("home"), getTranslations("meta")]);
@@ -39,9 +41,7 @@ export async function GalleryMontage({
         {CELLS.map((cell) => {
           const product = cell.slug ? bySlug.get(cell.slug) : null;
           const title = product
-            ? locale === "fr"
-              ? product.titleFr ?? product.title
-              : product.title
+            ? localTitle(locale, product.title, product.titleFr ?? "")
             : t("galleryBadge");
           const href = product
             ? `/${locale}/products/${product.slug}`

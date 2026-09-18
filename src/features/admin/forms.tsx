@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import type { Category, Product } from "@/lib/db/schema";
 import type { Article } from "@/lib/db/schema";
+import { localTitle } from "@/lib/format";
 import {
   loginAction,
   saveArticleAction,
@@ -119,7 +120,7 @@ export function ProductForm({
           <option value="">—</option>
           {categories.map((c) => (
             <option key={c.id} value={c.id}>
-              {locale === "fr" ? c.nameFr : c.name}
+              {localTitle(locale, c.name, c.nameFr)}
             </option>
           ))}
         </select>

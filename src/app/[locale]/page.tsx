@@ -52,7 +52,7 @@ export default async function HomePage({
       </section>
 
       {allProducts.length > 0 ? (
-        <GalleryMontage locale={locale as "ar" | "fr"} products={allProducts} />
+        <GalleryMontage locale={locale as "ar" | "fr" | "en"} products={allProducts} />
       ) : null}
 
       {featured.length > 0 ? (
@@ -60,7 +60,7 @@ export default async function HomePage({
           <h2 className="text-xl font-bold text-stone-900">{t("featuredTitle")}</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {featured.map((p) => (
-              <ProductCard key={p.id} locale={locale as "ar" | "fr"} product={p} />
+              <ProductCard key={p.id} locale={locale as "ar" | "fr" | "en"} product={p} />
             ))}
           </div>
         </section>
@@ -71,7 +71,7 @@ export default async function HomePage({
           <h2 className="text-xl font-bold text-stone-900">{t("latestTitle")}</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {articles.map((a) => (
-              <ArticleCard key={a.id} locale={locale as "ar" | "fr"} article={a} />
+              <ArticleCard key={a.id} locale={locale as "ar" | "fr" | "en"} article={a} />
             ))}
           </div>
         </section>

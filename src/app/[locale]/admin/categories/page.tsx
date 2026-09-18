@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { listCategories } from "@/features/catalog/queries";
 import { requireAdmin } from "@/features/admin/session";
 import { deleteCategoryAction } from "@/features/admin/actions";
+import { localTitle } from "@/lib/format";
 import { CategoryForm, ConfirmDelete } from "@/features/admin/forms";
 
 export const dynamic = "force-dynamic";
@@ -31,7 +32,7 @@ export default async function AdminCategoriesPage({
             <li key={c.id} className="flex items-center justify-between gap-4 px-4 py-3">
               <div>
                 <p className="font-medium text-stone-900">
-                  {locale === "fr" ? c.nameFr : c.name}{" "}
+                  {localTitle(locale, c.name, c.nameFr)}{" "}
                   <span className="text-sm text-stone-400">({c.slug})</span>
                 </p>
                 <p className="text-sm text-stone-500">

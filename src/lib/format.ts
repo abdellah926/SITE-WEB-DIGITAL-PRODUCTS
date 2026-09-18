@@ -1,9 +1,14 @@
 export function formatMAD(amount: number, locale: string): string {
-  return new Intl.NumberFormat(locale === "ar" ? "ar-MA" : "fr-MA", {
+  const tag = locale === "ar" ? "ar-MA" : locale === "fr" ? "fr-MA" : "en";
+  return new Intl.NumberFormat(tag, {
     style: "currency",
     currency: "MAD",
     maximumFractionDigits: 0,
   }).format(amount);
+}
+
+export function localTitle(locale: string, ar: string, fr: string): string {
+  return locale === "ar" ? ar : fr;
 }
 
 export function slugify(input: string): string {

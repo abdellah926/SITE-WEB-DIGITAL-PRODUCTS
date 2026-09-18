@@ -2,8 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import type { Article } from "@/lib/db/schema";
+import type { Locale } from "@/lib/i18n/routing";
 
-export async function ArticleCard({ locale, article }: { locale: "ar" | "fr"; article: Article }) {
+export async function ArticleCard({ locale, article }: { locale: Locale; article: Article }) {
   const t = await getTranslations("article");
   return (
     <Link

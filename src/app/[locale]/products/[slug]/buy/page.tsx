@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { getProductBySlug } from "@/features/catalog/queries";
-import { formatMAD } from "@/lib/format";
+import { formatMAD, localTitle } from "@/lib/format";
 import { BuyForm } from "@/components/buy-form";
 
 export const dynamic = "force-dynamic";
@@ -16,7 +16,7 @@ export async function generateMetadata({
   const product = await getProductBySlug(slug);
   if (!product) return { title: "404" };
   return {
-    title: `${locale === "fr" ? product.titleFr : product.title} — achat`,
+    title: `${localTitle(locale, product.title, product.titleFr)} — checkout`,
     robots: { index: false, follow: true },
   };
 }
@@ -31,7 +31,7 @@ export default async function BuyPage({
   if (!product || !product.fileKey) notFound();
 
   const [t] = await Promise.all([getTranslations("order")]);
-  const title = locale === "fr" ? product.titleFr : product.title;
+  const title = localTitle(locale, product.title, product.titleFr);
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col gap-6 px-4 py-10">
@@ -41,12 +41,12 @@ export default async function BuyPage({
           <p className="font-medium text-stone-900">{title}</p>
           <p className="text-sm text-stone-500">{t("summaryTitle")}</p>
         </div>
-        <p className="font-bold text-amber-800">{formatMAD(product.priceMAD, locale as "ar" | "fr")}</p>
+        <p className="font-bold text-amber-800">{formatMAD(product.priceMAD, locale)}</p>
       </div>
       <BuyForm
-        locale={locale as "ar" | "fr"}
+        locale={locale as "ar" | "fr" | "en"}
         slug={slug}
-        priceText={formatMAD(product.priceMAD, locale as "ar" | "fr")}
+        priceText={formatMAD(product.priceMAD, locale)}
       />
     </div>
   );

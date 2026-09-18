@@ -5,7 +5,7 @@ const ROUTES = ["", "products", "articles"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  return ["ar", "fr"].flatMap((locale) =>
+  return ["ar", "fr", "en"].flatMap((locale) =>
     ROUTES.map((route) => ({
       url: `${BASE}/${locale}/${route}`,
       lastModified: now,

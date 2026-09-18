@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { getProductBySlug, listCategories } from "@/features/catalog/queries";
 import { WatermarkedImage } from "@/components/watermarked-image";
-import { formatMAD } from "@/lib/format";
+import { formatMAD, localTitle } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
@@ -17,8 +17,8 @@ export async function generateMetadata({
   const product = await getProductBySlug(slug);
   if (!product) return { title: "404" };
   return {
-    title: locale === "fr" ? product.titleFr : product.title,
-    description: locale === "fr" ? product.descriptionFr : product.description,
+    title: localTitle(locale, product.title, product.titleFr),
+    description: localTitle(locale, product.description, product.descriptionFr),
   };
 }
 
@@ -36,8 +36,8 @@ export default async function ProductPage({
     listCategories(),
   ]);
 
-  const title = locale === "fr" ? product.titleFr : product.title;
-  const description = locale === "fr" ? product.descriptionFr : product.description;
+  const title = localTitle(locale, product.title, product.titleFr);
+  const description = localTitle(locale, product.description, product.descriptionFr);
   const category = categories.find((c) => c.id === product.categoryId);
 
   return (
@@ -53,12 +53,7 @@ export default async function ProductPage({
         <div className="flex flex-col gap-4">
           {category ? (
             <p className="text-sm text-stone-500">
-              {t("categoryLabel")}: {locale === "fr" ? category.nameFr : category.name}
-            </p>
-          ) : null}
-          {category ? (
-            <p className="text-sm text-stone-500">
-              {t("categoryLabel")}: {locale === "fr" ? category.nameFr : category.name}
+              {t("categoryLabel")}: {localTitle(locale, category.name, category.nameFr)}
             </p>
           ) : null}
           <h1 className="text-3xl font-bold text-stone-900">{title}</h1>

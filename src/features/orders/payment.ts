@@ -33,7 +33,9 @@ export function buildRibWhatsappUrl(
   const msg =
     locale === "ar"
       ? `مرحبا، منتوج: «${title}» — الثمن: ${priceText} — مرجع الطلب: ${orderRef} — الحساب المستلم: ${iban}. اسم المشتري المسجّل في الطلب: ${buyerName}. للتأكيد أرسل لنا: 1) اسمك الكامل كما سيظهر في عملية التحويل، و2) رقم مرجع التحويل (réf).`
-      : `Bonjour, produit : « ${title} » — Montant : ${priceText} — Référence commande : ${orderRef} — Compte bénéficiaire : ${iban}. Nom de l'acheteur saisi à la commande : ${buyerName}. Pour confirmer, envoyez-nous : 1) votre nom complet tel qu'il apparaîtra sur le virement, et 2) le numéro de référence (réf) du virement.`;
+      : locale === "fr"
+        ? `Bonjour, produit : « ${title} » — Montant : ${priceText} — Référence commande : ${orderRef} — Compte bénéficiaire : ${iban}. Nom de l'acheteur saisi à la commande : ${buyerName}. Pour confirmer, envoyez-nous : 1) votre nom complet tel qu'il apparaîtra sur le virement, et 2) le numéro de référence (réf) du virement.`
+        : `Hello, product: « ${title} » — Amount: ${priceText} — Order reference: ${orderRef} — Beneficiary account: ${iban}. Buyer name entered at checkout: ${buyerName}. To confirm, send us: 1) your full name exactly as it will appear on the transfer, and 2) the transfer reference number (réf).`;
   return `https://wa.me/${digits}?text=${encodeURIComponent(msg)}`;
 }
 
@@ -98,7 +100,7 @@ export function buildCmiForm(input: BuildPaymentInput): CmiBuildResult {
     amount: input.amountMAD.toFixed(2),
     oid: input.orderRef,
     currency: "504",
-    lang: input.locale === "ar" ? "ar" : "fr",
+    lang: input.locale,
     email: input.email,
     BillToName: input.name,
     AutoRedirect: "true",

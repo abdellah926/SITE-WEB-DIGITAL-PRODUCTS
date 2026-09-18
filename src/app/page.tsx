@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import { routing, type Locale } from "@/lib/i18n/routing";
 
 export default async function RootPage() {
   const store = await cookies();
-  const pref = store.get("NEXT_LOCALE")?.value === "fr" ? "fr" : "ar";
-  redirect(`/${pref}`);
+  const pref = (store.get("NEXT_LOCALE")?.value ?? "ar") as Locale;
+  redirect(`/${routing.locales.includes(pref) ? pref : routing.defaultLocale}`);
 }

@@ -4,7 +4,7 @@ import { listProducts } from "@/features/catalog/queries";
 import { requireAdmin } from "@/features/admin/session";
 import { deleteProductAction } from "@/features/admin/actions";
 import { ConfirmDelete } from "@/features/admin/forms";
-import { formatMAD } from "@/lib/format";
+import { formatMAD, localTitle } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
@@ -39,7 +39,7 @@ export default async function AdminProductsPage({
             <li key={p.id} className="flex items-center justify-between gap-4 px-4 py-3">
               <div className="min-w-0">
                 <p className="truncate font-medium text-stone-900">
-                  {locale === "fr" ? p.titleFr : p.title}
+                  {localTitle(locale, p.title, p.titleFr)}
                 </p>
                 <p className="text-sm text-stone-500">
                   {formatMAD(p.priceMAD, locale)} ·{" "}
