@@ -1,11 +1,27 @@
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
-import { listFeaturedProducts } from "@/features/catalog/queries";
+import type { Metadata } from "next";
+import { listFeaturedProducts, listProducts } from "@/features/catalog/queries";
 import { listLatestArticles } from "@/features/content/queries";
 import { ProductCard } from "@/components/product-card";
 import { ArticleCard } from "@/components/article-card";
+import { GalleryMontage } from "@/components/gallery";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "meta" });
+  return {
+    title: t("siteName"),
+    description: t("description"),
+    keywords: t("keywords"),
+  };
+}
 
 export default async function HomePage({
   params,
@@ -13,10 +29,11 @@ export default async function HomePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const [t, featured, articles] = await Promise.all([
+  const [t, featured, articles, allProducts] = await Promise.all([
     getTranslations("home"),
     listFeaturedProducts(),
     listLatestArticles(locale),
+    listProducts(),
   ]);
 
   return (
@@ -33,6 +50,10 @@ export default async function HomePage({
           {t("browseButton")}
         </Link>
       </section>
+
+      {allProducts.length > 0 ? (
+        <GalleryMontage locale={locale as "ar" | "fr"} products={allProducts} />
+      ) : null}
 
       {featured.length > 0 ? (
         <section className="flex flex-col gap-4">

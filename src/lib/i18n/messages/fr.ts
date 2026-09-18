@@ -4,6 +4,10 @@ const messagesFr: Messages = {
   meta: {
     siteName: "Mes Créations au Crochet",
     tagline: "Créations au crochet et fait main, fabriquées au Maroc",
+    description:
+      "Boutique marocaine de crochet et d'articles faits main : couvertures, poupées amigurumi, écharpes et paniers, avec des tutos pour apprendre le crochet. Commandes via WhatsApp et paiement à la livraison au Maroc.",
+    keywords:
+      "crochet, fait main, cadeaux, couverture au crochet, poupée amigurumi, écharpe en laine, apprendre le crochet, boutique en ligne Maroc, paiement à la livraison, artisanal marocain",
   },
   nav: {
     home: "Accueil",
@@ -18,6 +22,9 @@ const messagesFr: Messages = {
     browseButton: "Voir les produits",
     featuredTitle: "Produits en vedette",
     latestTitle: "Derniers tutos",
+    galleryTitle: "Nos dernières créations",
+    galleryBadge: "Bientôt disponible",
+    galleryCta: "Tout voir",
   },
   product: {
     categoryLabel: "Catégorie",

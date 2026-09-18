@@ -16,8 +16,12 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations("nav");
-  return { title: locale === "ar" ? t("products") : "Produits" };
+  const [t, mt] = await Promise.all([getTranslations("nav"), getTranslations("meta")]);
+  return {
+    title: `${locale === "ar" ? t("products") : "Produits"} | ${mt("siteName")}`,
+    description: mt("description"),
+    keywords: mt("keywords"),
+  };
 }
 
 export default async function ProductsPage({

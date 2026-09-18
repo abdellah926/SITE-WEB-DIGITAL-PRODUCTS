@@ -122,15 +122,17 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 ## [ORPHANS & PENDING]
 
 - **RESOLVED**: live PostgreSQL (Neon, pooler endpoint) configured in `.env.local`; `drizzle-kit migrate` applied the v1 schema; `seed.ts` loaded 5 products / 3 categories / 6 articles.
+- **RESOLVED (operator input)**: real product photos — the 6 "BY CYRUS/CYRUS" photos (source `%USERPROFILE%\Downloads`) resized to web JPEG (≤343KB, max 1400px, white-flattened) via `scripts/resize-photos.ps1` → `public/img/shop/by-cyrus-1..6.jpg`; attached to seeded products in order (by-cyrus-1..5, seed order: afghan blanket, amigurumi, scarf, basket, kit) and served 200 on dev. Old SVG placeholders remain only as ProductCard/detail fallbacks.
+- **RESOLVED (feature)**: homepage gallery montage — `src/components/gallery.tsx` bento grid (6 cells; img №1 = large 2×2; imgs 1–4 = "perfect 4" prominent; №6 = "Bientôt disponible/جديد قريباً" → /products); every cell links to its product page; keyword-rich `alt` = product title + tagline. Verified live dev: /ar & /fr contain gallery title/badge/CTA + 6 images; detail page shows by-cyrus image.
+- **RESOLVED (SEO)**: `meta.keywords` + `meta.description` (ar+fr) baked into root layout + `generateMetadata` on home & products index (explicit `getTranslations({locale, namespace})` in metadata — better per next-intl guidance); ar keywords: كروشي، أعمال يدوية، هدايا، بطانية كروشي، دمية أميغورومي، وشاح صوف، تعلم الكروشي، اشتري أونلاين المغرب، دفع عند الاستلام، صناعة يدوية مغربية (fr mirrored). Verified meta tags in head of /ar + /fr dev HTML.
 - **PENDING (operator input)**: real WhatsApp Business number (currently placeholder `NEXT_PUBLIC_SHOP_PHONE=212600000000`) + final pre-filled message templates ar/fr.
-- **PENDING (operator input)**: real product photos to replace `public/img/*.svg` placeholders (5 products + article covers).
 - **PENDING**: MAP keyword strategy for SEO (crochet terms ar/fr) — inputs for M3/G5 refinement.
 - **PENDING (production security)**: rotate/replace the Neon credentials after first live deploy — they were shared in chat and live in `.env.local` only (gitignored, never committed; `.env.local`/`.env` confirmed via `git check-ignore`).
 - **PENDING (i18n wording)**: footer/nav admin label currently reads "الإدارة" — consider "لوحة الإدارة"; ar nav typo "مقولات ودروس"→"مقالات ودروس" fixed in messages.
 - **RESOLVED (UI/UX)**: unstyled "HTML-only" rendering fixed (see CSS rule above) — pending deploy to Vercel.
 - **PENDING (Phase 2)**: CMI/payment gateway, cart, inventory/variants, order DB, media pipeline, newsletter.
 - **ORPHAN resolved**: currency formatting (`formatMAD`, `lib/format.ts`); seed dataset for 5 products + 6 articles produced as seed.ts + SVG placeholders.
-- **Decisions recorded**: TS pinned to 5.9.3 and eslint to 9.39.5 (toolchain compat); `next lint` replaced by `eslint` directly; npm audit shows 4 moderate dev-only vulns inside drizzle-kit toolchain (no safe fix without breaking downgrade — accepted).
+- **Decisions recorded**: TS pinned to 5.9.3 and eslint to 9.39.5 (toolchain compat); `next lint` replaced by `eslint` directly; npm audit shows 4 moderate dev-only vulns inside drizzle-kit toolchain (no safe fix without breaking downgrade — accepted). CSS rule (import `globals.css` from thin root `src/app/layout.tsx`, NOT dynamic-segment layout — Next 16.3.5+Turbopack otherwise emits stylesheet link only for SSG routes); layout rule (html+`setRequestLocale`+`generateStaticParams` in `[locale]/layout.tsx`); i18n/metadata rule (pass `locale` explicitly to `getTranslations` inside `generateMetadata`).
 
 ---
 
@@ -141,7 +143,7 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 | **M0** | Scaffold+baseline | **DONE** — `typecheck`, `eslint`, `next build` all green; deps pinned; migration `drizzle/0000_*.sql` **applied live on Neon** (`drizzle-kit migrate` ✓); DB confirmed: 5 products / 3 categories / 6 articles | — |
 | **M1** | Catalog & i18n | **DONE** — `/ar` dir=rtl + Arabic, `/fr` dir=ltr + French (verified dev+prod HTML); **seeded products render with prices live** (`بطانية كروشي صوفية` 350 د.م، etc.) | — |
 | **M2** | WhatsApp ordering | **DONE** — live product page emits `wa.me/212600000000?text=<encoded "بطانية كروشي صوفية بسعر 350 درهم">`; out-of-stock page (wool-storage-basket) shows disabled pill, no wa link (verified) | replace placeholder `NEXT_PUBLIC_SHOP_PHONE` with real WhatsApp number |
-| **M3** | Content & SEO | **DONE** — 6 seeded articles render ar+fr (title/excerpt/body + CTA block verified live); sitemap.xml (6 URLs) + robots.txt verified dev+prod | Lighthouse SEO ≥ 90 on `/ar` article (needs deployed preview) |
+| **M3** | Content & SEO | **DONE** — 6 seeded articles render ar+fr (title/excerpt/body + CTA block verified live); sitemap.xml (6 URLs) + robots.txt verified dev+prod; **keywords+description meta ar/fr + homepage gallery montage added** | Lighthouse SEO ≥ 90 on `/ar` article (needs deployed preview) |
 | **M4** | Admin | **DONE** — 401/307 guard without cookie, 200 with valid session cookie (dashboard/products/categories/articles); **persist+reflect verified against live Postgres**: insert→public detail + admin list show row, delete→public 404 | server-action HTTP POST transport itself (React/Next boundary) deferred to browser check on preview — DB-level write path validated via same drizzle schema |
 | **M5** | Telemetry & hardening | Build done; `<Analytics/>` wired (client-injected, active on Vercel); selfcheck (12/12) + dev/prod smoke suite recorded in `PROJECT_MAP`+logs | Lighthouse run + console-error sweep on deployed preview |
 
