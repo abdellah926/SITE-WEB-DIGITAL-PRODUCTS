@@ -34,6 +34,34 @@ async function main() {
   }
   console.log("created order ref=" + order.ref);
 
+  // rib (virement) flow: dedicated page renders the RIB once, with WhatsApp confirm CTA
+  const ribOrder = await createOrder({
+    name: "Test Buyer RIB",
+    email: "rib@test.co",
+    locale: "ar",
+    totalMAD: product.priceMAD,
+    provider: "rib",
+    item: {
+      productId: product.id,
+      title: product.title,
+      priceMAD: product.priceMAD,
+      fileKey: product.fileKey as string,
+    },
+  });
+  if (!ribOrder) {
+    console.log("FAIL  e2e: rib createOrder returned null (DB down?)");
+    process.exit(1);
+  }
+  const ribPage = await fetch(`${BASE}/ar/pay/rib/${ribOrder.ref}`);
+  const ribHtml = await ribPage.text();
+  check("e2e: rib pay page 200", ribPage.status === 200);
+  check("e2e: rib page shows IBAN", ribHtml.includes("MA64 2300 1057 6579 1211 0187 0061"));
+  check("e2e: rib page has wa.me confirm link", ribHtml.includes("wa.me/"));
+  check("e2e: rib page noindex", ribHtml.toLowerCase().includes("noindex"));
+  const robotsRes = await fetch(`${BASE}/robots.txt`);
+  const robotsText = await robotsRes.text();
+  check("e2e: robots disallows /pay", robotsText.includes("/pay/"));
+
   // order starts pending
   let o = await getOrderByRef(order.ref);
   check("e2e: order created pending", o?.status === "pending");

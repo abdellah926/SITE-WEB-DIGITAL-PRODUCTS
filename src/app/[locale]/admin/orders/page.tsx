@@ -4,8 +4,12 @@ import { listOrders } from "@/features/orders/queries";
 import { requireAdmin } from "@/features/admin/session";
 import { formatMAD } from "@/lib/format";
 import { markOrderPaidAction } from "@/features/admin/actions";
+import { signDownload } from "@/features/orders/download-token";
+import { CopyButton } from "@/components/copy-button";
 
 export const dynamic = "force-dynamic";
+
+const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { robots: { index: false, follow: false } };
@@ -89,12 +93,19 @@ export default async function AdminOrdersPage({
                         </button>
                       </form>
                     ) : (
-                      <a
-                        href={`/${locale}/orders/${o.ref}`}
-                        className="rounded-full border border-stone-300 px-4 py-1.5 text-xs font-medium text-stone-600 hover:bg-stone-50"
-                      >
-                        {t("open")}
-                      </a>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <a
+                          href={`/${locale}/orders/${o.ref}`}
+                          className="rounded-full border border-stone-300 px-4 py-1.5 text-xs font-medium text-stone-600 hover:bg-stone-50"
+                        >
+                          {t("open")}
+                        </a>
+                        <CopyButton
+                          value={`${BASE}/d/${signDownload(o.ref)}`}
+                          label={t("copyLink")}
+                          copiedLabel={t("copyLinkCopied")}
+                        />
+                      </div>
                     )}
                   </td>
                 </tr>

@@ -11,7 +11,7 @@ export async function createOrder(args: {
   email: string;
   locale: "ar" | "fr";
   totalMAD: number;
-  provider: "cmi" | "mock";
+  provider: "cmi" | "mock" | "rib";
   item: { productId: number; title: string; priceMAD: number; fileKey: string };
 }): Promise<Order | null> {
   const db = getDb();

@@ -185,3 +185,38 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 - `dev.log` is tracked in git (runtime noise) — remove + add `dev*.log` to `.gitignore`.
 - Watermark font is Latin-only (Geist): Arabic buyer names render as blanks on the PDF line; email+ref (ASCII) always present. Add an Arabic TTF if needed.
 - Mock orders left after E2E are truncated from DB (manual runs of `scripts/cleanup-orders.ts`; not committed).
+
+---
+
+## [RIB / VIREMENT + WHATSAPP CONFIRM FLOW — v2.1 · 2026-09-18]
+
+> Chosen over CMI for immediate launch: no bank contract needed — the buyer transfers to the seller's CIH account, the seller confirms receipt, then sends the signed PDF download link. Fully live.
+
+### Design
+- New provider mode `rib` (`PAYMENT_PROVIDER=rib` on Vercel prod). `paymentMode()`: CMI (if configured) → rib → mock fallback. `orders.provider` is free text (no migration).
+- `buyProduct` already redirects by mode → `/[locale]/pay/[mode]/[ref]`; `rib` resolves to the new page. No action change needed.
+- `ribConfig()` (env): `RIB_IBAN` (default = real CIH IBAN), `RIB_SWIFT`, `RIB_HOLDER` (optional), `NEXT_PUBLIC_SHOP_PHONE`.
+- `buildRibWhatsappUrl()` builds the buyer→seller confirm message (locale-aware, includes price + order ref + IBAN); phone from `NEXT_PUBLIC_SHOP_PHONE`.
+- New page `src/app/[locale]/pay/rib/[ref]/page.tsx`: amount + ref, IBAN/SWIFT/holder with copy buttons, WhatsApp confirm CTA, explanatory note. Pending-only (redirects to order page otherwise); provider-guarded; noindex (pay layout).
+
+### Delivery (half-automatic)
+1. Buyer fills checkout → order `pending` (provider `rib`) → sees the RIB + WhatsApp button.
+2. Buyer transfers and taps the button → WhatsApp opens with a ready message (ref + amount). Seller receives it.
+3. Seller verifies the bank credit, then in **Admin → Orders** taps `تمكين كمدفوعة` and **`نسخ رابط التحميل`** (new `CopyButton`, full `/d/<token>` URL) and pastes it back in the WhatsApp chat.
+4. Buyer opens the signed link → watermarked PDF (5 downloads / 7 days). Same secured `/d/` pipeline as CMI.
+
+### New/changed files
+- `src/features/orders/payment.ts` — `PaymentMode` gains `rib`; `ribConfig()`, `buildRibWhatsappUrl()`; `paymentMode()` order.
+- `src/app/[locale]/pay/rib/[ref]/page.tsx` (new); `src/components/copy-button.tsx` (new, client).
+- `src/app/[locale]/admin/orders/page.tsx` — copy-download-link button on paid rows (uses `signDownload` + `NEXT_PUBLIC_SITE_URL`).
+- i18n ar/fr: `order.rib*` strings + `admin.copyLink`/`copyLinkCopied`.
+- `next.config.ts` — `/pay/:path*` no-store + noindex; `/orders/:path*` noindex. `robots.ts` — disallow `/pay/`.
+- `scripts/selfcheck.ts` — rib config / wa-link / payment-mode checks. `scripts/e2e-local.ts` — rib page + robots checks (now **32/32**).
+
+### Verified live (site-web-digital-products.vercel.app)
+- Prod env: `PAYMENT_PROVIDER=rib`, `NEXT_PUBLIC_SHOP_PHONE=212603017198`, `RIB_IBAN=MA64 2300 1057 6579 1211 0187 0061`, `RIB_SWIFT=CIHMMAMC`. `NEXT_PUBLIC_SHOP_PHONE` re-added after earlier removal.
+- Production E2E **32/32 PASS** incl. rib page 200 / IBAN shown / `wa.me/212603017198` / noindex / robots `/pay/`; full mock→watermark→cap→reject path still green.
+- Test orders truncated after run.
+
+### STILL PENDING (operator)
+- `RIB_HOLDER` (account holder name) not set — add on Vercel for clarity to buyers (page hides the row while empty).

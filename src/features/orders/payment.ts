@@ -1,7 +1,33 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { log } from "@/lib/log";
 
-export type PaymentMode = "cmi" | "mock";
+export type PaymentMode = "cmi" | "mock" | "rib";
+
+export interface RibConfig {
+  iban: string;
+  swift: string;
+  holder: string;
+  phone: string;
+}
+
+export function ribConfig(): RibConfig {
+  return {
+    iban: process.env.RIB_IBAN ?? "MA64 2300 1057 6579 1211 0187 0061",
+    swift: process.env.RIB_SWIFT ?? "CIHMMAMC",
+    holder: process.env.RIB_HOLDER ?? "",
+    phone: process.env.NEXT_PUBLIC_SHOP_PHONE ?? "",
+  };
+}
+
+export function buildRibWhatsappUrl(priceText: string, orderRef: string, locale: string): string {
+  const { iban, phone } = ribConfig();
+  const digits = String(phone).replace(/\D/g, "").replace(/^0+/, "");
+  const msg =
+    locale === "ar"
+      ? `مرحبا، أؤكد تحويلي البنكي للمنتج (${priceText}) — مرجع الطلب: ${orderRef}. الحساب المستلم: ${iban}.`
+      : `Bonjour, je confirme mon virement bancaire (${priceText}) — référence : ${orderRef}. Compte bénéficiaire : ${iban}.`;
+  return `https://wa.me/${digits}?text=${encodeURIComponent(msg)}`;
+}
 
 export interface CmiConfig {
   clientId: string;
@@ -31,7 +57,9 @@ export type CmiBuildResult = CmiPaymentForm | { mode: "mock" };
 
 export function paymentMode(): PaymentMode {
   const cfg = cmiConfig();
-  return cfg ? "cmi" : "mock";
+  if (cfg) return "cmi";
+  if (process.env.PAYMENT_PROVIDER === "rib") return "rib";
+  return "mock";
 }
 
 export function cmiConfig(): CmiConfig | null {

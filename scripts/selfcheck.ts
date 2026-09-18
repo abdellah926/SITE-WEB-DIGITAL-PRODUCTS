@@ -5,7 +5,7 @@ import {
   verifyDownload,
   MAX_DOWNLOADS,
 } from "@/features/orders/download-token";
-import { buildCmiForm, returnCode } from "@/features/orders/payment";
+import { buildCmiForm, returnCode, ribConfig, buildRibWhatsappUrl, paymentMode } from "@/features/orders/payment";
 import { newRef } from "@/features/orders/ref";
 import { slugify } from "@/lib/format";
 
@@ -73,6 +73,24 @@ check(
     );
   })()
 );
+
+/* orders: rib config + whatsapp confirm link */
+const rib = ribConfig();
+check("orders: rib IBAN present", rib.iban.startsWith("MA") && rib.iban.length >= 20);
+check("orders: rib SWIFT present", /^[A-Z]{8,11}$/.test(rib.swift));
+const prevPhone = process.env.NEXT_PUBLIC_SHOP_PHONE;
+process.env.NEXT_PUBLIC_SHOP_PHONE = "212600000000";
+const wa = buildRibWhatsappUrl("350 MAD", "1234-5678", "ar");
+if (prevPhone === undefined) delete process.env.NEXT_PUBLIC_SHOP_PHONE;
+else process.env.NEXT_PUBLIC_SHOP_PHONE = prevPhone;
+check("orders: wa confirm link shape", /^https:\/\/wa\.me\/\d+/.test(wa) && wa.includes("text="));
+const expectedMode =
+  process.env.PAYMENT_PROVIDER === "rib"
+    ? "rib"
+    : process.env.PAYMENT_PROVIDER === "cmi"
+      ? "cmi"
+      : "mock";
+check("orders: payment mode follows PAYMENT_PROVIDER", paymentMode() === expectedMode);
 
 /* format: slugify */
 check("format: slugify ascii", slugify("Hello World!") === "hello-world");
