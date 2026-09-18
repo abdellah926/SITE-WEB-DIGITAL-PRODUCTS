@@ -1,6 +1,6 @@
 # PROJECT_MAP — Handmade / Crochet Storefront (Morocco)
 
-> Status: IN PROGRESS — M0/M1 code-complete, live-DB steps gated on `DATABASE_URL`. Snapshot date: **2026-09-18** (Node v26.1.0).
+> Status: IN PROGRESS — M0–M2 done end-to-end, M3/M4 done with live-DB verification, M5 pending deployment. Snapshot date: **2026-09-18** (Node v26.1.0).
 > Business: trusted brand + sales + article/tutorial traffic for the Moroccan handicraft & crochet niche.
 > No guaranteed-profit or guaranteed-admission promises are made to users.
 
@@ -120,10 +120,11 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 
 ## [ORPHANS & PENDING]
 
-- **PENDING (operator input, blocks acceptance)**: real `DATABASE_URL` (Postgres, e.g. Neon) — without it all data pages render verified empty states and CRUD cannot be exercised; migration `drizzle/0000_*.sql` exists and is applied via `drizzle-kit push`/`migrate`.
+- **RESOLVED**: live PostgreSQL (Neon, pooler endpoint) configured in `.env.local`; `drizzle-kit migrate` applied the v1 schema; `seed.ts` loaded 5 products / 3 categories / 6 articles.
 - **PENDING (operator input)**: real WhatsApp Business number (currently placeholder `NEXT_PUBLIC_SHOP_PHONE=212600000000`) + final pre-filled message templates ar/fr.
 - **PENDING (operator input)**: real product photos to replace `public/img/*.svg` placeholders (5 products + article covers).
 - **PENDING**: MAP keyword strategy for SEO (crochet terms ar/fr) — inputs for M3/G5 refinement.
+- **PENDING (production security)**: rotate/replace the Neon credentials after first live deploy — they were shared in chat and live in `.env.local` only (gitignored, never committed; `.env.local`/`.env` confirmed via `git check-ignore`).
 - **PENDING (Phase 2)**: CMI/payment gateway, cart, inventory/variants, order DB, media pipeline, newsletter.
 - **ORPHAN resolved**: currency formatting (`formatMAD`, `lib/format.ts`); seed dataset for 5 products + 6 articles produced as seed.ts + SVG placeholders.
 - **Decisions recorded**: TS pinned to 5.9.3 and eslint to 9.39.5 (toolchain compat); `next lint` replaced by `eslint` directly; npm audit shows 4 moderate dev-only vulns inside drizzle-kit toolchain (no safe fix without breaking downgrade — accepted).
@@ -134,11 +135,11 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 
 | M | Scope | Status | Remaining gate |
 |---|---|---|---|
-| **M0** | Scaffold+baseline | **DONE** — `typecheck`, `eslint`, `next build` (Turbopack) all green; deps pinned; `drizzle-kit generate` produced `drizzle/0000_*.sql` (3 tables) | live DB migration (`drizzle-kit migrate`) — blocked on `DATABASE_URL` |
-| **M1** | Catalog & i18n | **DONE** — `/ar`→dir=rtl + Arabic content, `/fr`→dir=ltr + French content (verified via `next build` SSR HTML + dev/prod curl), 404 for unknown routes, admin-guard redirect verified | render 5 seeded products with MAD pricing in a live DB |
-| **M2** | WhatsApp ordering | Build done; `wa.me` URL builder covered by `npm run selfcheck` (host/encoding assertions pass) | E2E on a live in-stock product |
-| **M3** | Content & SEO | Build done; 6 seeded articles (3 ar + 3 fr) written into seed.ts; sitemap.xml (6 URLs) + robots.txt + 404 verified in dev and prod | live-DB read; Lighthouse SEO ≥ 90 |
-| **M4** | Admin | **DONE (code + guard verified)** — unauthenticated `/ar/admin`→307 login; valid session cookie→200 dashboard/products/categories; selfcheck asserts HMAC sign/verify/password/tamper/expiry | CRUD persistence E2E on live DB |
-| **M5** | Telemetry & hardening | Build done; `<Analytics/>` wired (client-injected at runtime, active on Vercel); selfcheck + smoke suite documented | Lighthouse run + console-error sweep on deployed preview |
+| **M0** | Scaffold+baseline | **DONE** — `typecheck`, `eslint`, `next build` all green; deps pinned; migration `drizzle/0000_*.sql` **applied live on Neon** (`drizzle-kit migrate` ✓); DB confirmed: 5 products / 3 categories / 6 articles | — |
+| **M1** | Catalog & i18n | **DONE** — `/ar` dir=rtl + Arabic, `/fr` dir=ltr + French (verified dev+prod HTML); **seeded products render with prices live** (`بطانية كروشي صوفية` 350 د.م، etc.) | — |
+| **M2** | WhatsApp ordering | **DONE** — live product page emits `wa.me/212600000000?text=<encoded "بطانية كروشي صوفية بسعر 350 درهم">`; out-of-stock page (wool-storage-basket) shows disabled pill, no wa link (verified) | replace placeholder `NEXT_PUBLIC_SHOP_PHONE` with real WhatsApp number |
+| **M3** | Content & SEO | **DONE** — 6 seeded articles render ar+fr (title/excerpt/body + CTA block verified live); sitemap.xml (6 URLs) + robots.txt verified dev+prod | Lighthouse SEO ≥ 90 on `/ar` article (needs deployed preview) |
+| **M4** | Admin | **DONE** — 401/307 guard without cookie, 200 with valid session cookie (dashboard/products/categories/articles); **persist+reflect verified against live Postgres**: insert→public detail + admin list show row, delete→public 404 | server-action HTTP POST transport itself (React/Next boundary) deferred to browser check on preview — DB-level write path validated via same drizzle schema |
+| **M5** | Telemetry & hardening | Build done; `<Analytics/>` wired (client-injected, active on Vercel); selfcheck (12/12) + dev/prod smoke suite recorded in `PROJECT_MAP`+logs | Lighthouse run + console-error sweep on deployed preview |
 
 **Out of scope now**: payments, cart, accounts, reviews, newsletters, stock/variants, media service, multi-admin.

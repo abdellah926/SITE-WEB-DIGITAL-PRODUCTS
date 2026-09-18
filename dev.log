@@ -48,3 +48,26 @@
  GET / 307 in 231ms (next.js: 190ms, application-code: 42ms)
  GET /ar 200 in 49ms (next.js: 7ms, generate-params: 6ms, application-code: 36ms)
   Reload env: .env.local
+(node:19152) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ GET /ar 200 in 1349ms (next.js: 91ms, generate-params: 8ms, application-code: 1251ms)
+ GET /fr 200 in 203ms (next.js: 5ms, generate-params: 6ms, application-code: 192ms)
+ GET /ar/products 200 in 407ms (next.js: 16ms, generate-params: 6ms, application-code: 384ms)
+ GET /ar/products/crochet-afghan-blanket 200 in 495ms (next.js: 121ms, application-code: 374ms)
+ GET /ar/articles 200 in 233ms (next.js: 19ms, generate-params: 6ms, application-code: 208ms)
+ GET /ar/articles/crochet-beginners-guide 200 in 1157ms (next.js: 958ms, application-code: 199ms)
+ GET /ar/products/wool-storage-basket 200 in 373ms (next.js: 16ms, application-code: 357ms)
+ GET /ar/admin/products/new 200 in 1887ms (next.js: 261ms, generate-params: 547ms, application-code: 1078ms)
+ GET /ar/products/e2e-crud-check-product 200 in 1178ms (next.js: 10ms, application-code: 1168ms)
+ GET /ar/admin/products 200 in 242ms (next.js: 12ms, generate-params: 5ms, application-code: 225ms)
+ GET /ar/products 200 in 380ms (next.js: 5ms, generate-params: 6ms, application-code: 368ms)
+ GET /ar/products/e2e-crud-check-product 404 in 1062ms (next.js: 10ms, application-code: 1052ms)
+ GET / 307 in 67ms (next.js: 22ms, application-code: 45ms)
+ GET /ar 200 in 1140ms (next.js: 7ms, generate-params: 8ms, application-code: 1125ms)
