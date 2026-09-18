@@ -376,3 +376,5 @@ https://nextjs.org/docs/messages/module-not-found
  GET /ar 200 in 1248ms (next.js: 35ms, generate-params: 9ms, application-code: 1204ms)
  GET /fr 200 in 231ms (next.js: 8ms, generate-params: 0.0ms, application-code: 223ms)
  GET /ar/products/crochet-afghan-blanket 200 in 621ms (next.js: 260ms, application-code: 361ms)
+  Reload env: .env.local
+  Reload env: .env.local
