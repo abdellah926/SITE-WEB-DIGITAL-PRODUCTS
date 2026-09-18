@@ -6,7 +6,7 @@ const messagesAr = {
   nav: {
     home: "الرئيسية",
     products: "المنتجات",
-    articles: "مقولات ودروس",
+    articles: "مقالات ودروس",
     admin: "الإدارة",
   },
   home: {

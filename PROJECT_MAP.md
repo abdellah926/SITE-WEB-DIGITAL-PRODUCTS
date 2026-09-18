@@ -88,6 +88,7 @@ src/
     sitemap.ts  robots.ts  not-found.tsx  global-error.tsx        # G5-G6
   ```
 - **Layout rule (verified vs next-intl v4 without middleware/proxy)**: `<html>` lives in `app/[locale]/layout.tsx` (calls `setRequestLocale` + `generateStaticParams`), NOT in a root `app/layout.tsx` — `getLocale()` resolves per-request only after `setRequestLocale`. `app/page.tsx` is a cookie-based redirect to `/[locale]`; root `not-found.tsx` is a self-contained full document (no root layout wraps it).
+- **CSS rule (Next 16.3.5 + Turbopack gotcha, fixed)**: the Tailwind entry (`globals.css`) MUST be imported from the thin root `app/layout.tsx` (`./globals.css`, returns `children` without html), NOT from `[locale]/layout.tsx`. Importing it from a *dynamic* segment layout causes the `<link rel="stylesheet">` to be emitted ONLY for statically-prerendered routes (e.g. admin/login) — all `ƒ` dynamic routes then ship zero CSS → classic "HTML without design". Verified with production build, `next start`, and headless-browser DOM (link present + CSS 200 + `.bg-stone-50` rule served).
   features/
     catalog/    schema.ts co-located queries, card/detail components
     content/    article entity, renderer (plain content, no MDX), CTA block
@@ -125,6 +126,8 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 - **PENDING (operator input)**: real product photos to replace `public/img/*.svg` placeholders (5 products + article covers).
 - **PENDING**: MAP keyword strategy for SEO (crochet terms ar/fr) — inputs for M3/G5 refinement.
 - **PENDING (production security)**: rotate/replace the Neon credentials after first live deploy — they were shared in chat and live in `.env.local` only (gitignored, never committed; `.env.local`/`.env` confirmed via `git check-ignore`).
+- **PENDING (i18n wording)**: footer/nav admin label currently reads "الإدارة" — consider "لوحة الإدارة"; ar nav typo "مقولات ودروس"→"مقالات ودروس" fixed in messages.
+- **RESOLVED (UI/UX)**: unstyled "HTML-only" rendering fixed (see CSS rule above) — pending deploy to Vercel.
 - **PENDING (Phase 2)**: CMI/payment gateway, cart, inventory/variants, order DB, media pipeline, newsletter.
 - **ORPHAN resolved**: currency formatting (`formatMAD`, `lib/format.ts`); seed dataset for 5 products + 6 articles produced as seed.ts + SVG placeholders.
 - **Decisions recorded**: TS pinned to 5.9.3 and eslint to 9.39.5 (toolchain compat); `next lint` replaced by `eslint` directly; npm audit shows 4 moderate dev-only vulns inside drizzle-kit toolchain (no safe fix without breaking downgrade — accepted).

@@ -2,7 +2,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import type { ReactNode } from "react";
-import "../globals.css";
 import { routing } from "@/lib/i18n/routing";
 import { SiteHeader, SiteFooter } from "@/components/layout";
 

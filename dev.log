@@ -71,3 +71,305 @@ See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode de
  GET /ar/products/e2e-crud-check-product 404 in 1062ms (next.js: 10ms, application-code: 1052ms)
  GET / 307 in 67ms (next.js: 22ms, application-code: 45ms)
  GET /ar 200 in 1140ms (next.js: 7ms, generate-params: 8ms, application-code: 1125ms)
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:1:1
+Error: Module not found: Can't resolve '../globals.css'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
+  [90m4 |[0m   [36mreturn[0m children;
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /ar 200 in 1339ms (next.js: 150ms, generate-params: 7ms, application-code: 1182ms)
+ GET /ar/articles 200 in 1528ms (next.js: 356ms, generate-params: 11ms, application-code: 1162ms)
+ GET /ar/articles 200 in 231ms (next.js: 7ms, generate-params: 9ms, application-code: 215ms)
