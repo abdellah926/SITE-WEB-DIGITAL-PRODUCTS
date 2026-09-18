@@ -378,3 +378,4 @@ https://nextjs.org/docs/messages/module-not-found
  GET /ar/products/crochet-afghan-blanket 200 in 621ms (next.js: 260ms, application-code: 361ms)
   Reload env: .env.local
   Reload env: .env.local
+  Reload env: .env.local
