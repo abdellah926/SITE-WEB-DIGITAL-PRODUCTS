@@ -67,6 +67,7 @@ const messagesFr: Messages = {
     ribTitle: "Paiement par virement bancaire",
     ribAmount: "Montant",
     ribIban: "IBAN",
+    ribRib: "RIB",
     ribSwift: "SWIFT",
     ribHolder: "Titulaire",
     ribStep1Title: "1. Effectuez le virement vers le compte ci-dessous",

@@ -64,6 +64,7 @@ const messagesAr = {
     ribTitle: "الدفع عبر التحويل البنكي",
     ribAmount: "المبلغ",
     ribIban: "IBAN",
+    ribRib: "RIB",
     ribSwift: "SWIFT",
     ribHolder: "صاحب الحساب",
     ribStep1Title: "1. حوّل الثمن إلى الحساب التالي",

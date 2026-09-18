@@ -5,6 +5,7 @@ export type PaymentMode = "cmi" | "mock" | "rib";
 
 export interface RibConfig {
   iban: string;
+  number: string;
   swift: string;
   holder: string;
   phone: string;
@@ -13,6 +14,7 @@ export interface RibConfig {
 export function ribConfig(): RibConfig {
   return {
     iban: process.env.RIB_IBAN ?? "MA64 2300 1057 6579 1211 0187 0061",
+    number: process.env.RIB_NUMBER ?? "230 010 5765791211018700 61",
     swift: process.env.RIB_SWIFT ?? "CIHMMAMC",
     holder: process.env.RIB_HOLDER ?? "",
     phone: process.env.NEXT_PUBLIC_SHOP_PHONE ?? "",

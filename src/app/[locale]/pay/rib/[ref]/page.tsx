@@ -52,6 +52,13 @@ export default async function RibPayPage({
             </div>
             <CopyButton value={rib.swift} label={t("ribCopy")} copiedLabel={t("ribCopied")} />
           </div>
+          <div className="flex items-center justify-between gap-3 rounded-lg bg-stone-50 px-4 py-3">
+            <div className="min-w-0">
+              <p className="text-xs font-medium text-stone-400">{t("ribRib")}</p>
+              <p className="break-all font-mono text-sm font-semibold text-stone-900">{rib.number}</p>
+            </div>
+            <CopyButton value={rib.number.replace(/\s/g, "")} label={t("ribCopy")} copiedLabel={t("ribCopied")} />
+          </div>
           {rib.holder ? (
             <div className="rounded-lg bg-stone-50 px-4 py-3">
               <p className="text-xs font-medium text-stone-400">{t("ribHolder")}</p>
