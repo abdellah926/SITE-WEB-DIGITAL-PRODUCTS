@@ -1,0 +1,26 @@
+{"level":"error","msg":"private file missing","meta":"C:\\Users\\abdou\\Downloads\\FOLDERS\\private\\crochet-afghan-blanket.pdf","ts":"2026-09-18T14:51:08.034Z"}
+{"level":"error","msg":"private file missing","meta":"C:\\Users\\abdou\\Downloads\\FOLDERS\\private\\crochet-afghan-blanket.pdf","ts":"2026-09-18T14:51:19.345Z"}
+{"level":"error","msg":"pdf watermark failed","meta":"Error: Input to `PDFDocument.embedFont` was a custom font, but no `fontkit` instance was found. You must register a `fontkit` instance with `PDFDocument.registerFontkit(...)` before embedding custom fonts.","ts":"2026-09-18T14:51:51.307Z"}
+⨯ TypeError: {imported module ./nodemodules/pdf-lib/es/api/PDFDocument.js}.PDFDocument.registerFontkit is not a function
+    at Module.eval (src\features\orders\pdf.ts:6:13)
+    at Module.eval (src\app\api\wmtest\route.ts:2:1)
+  4 | import { readPrivateFile } from "./files";
+  5 |
+> 6 | PDFDocument.registerFontkit(fontkit);
+    |             ^
+  7 |
+  8 | let fontBytes: Uint8Array | null | undefined;
+  9 |
+⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+⨯ The directory at "C:\Users\abdou\Downloads\FOLDERS\.next\dev" was deleted.
+
+Deleting this directory while Next.js is running can lead to undefined behavior. Restarting the server to recover...
+(node:5900) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)

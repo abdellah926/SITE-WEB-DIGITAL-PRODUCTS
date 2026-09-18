@@ -1,381 +1,61 @@
+
+> crochet-store@0.1.0 dev
+> next dev
+
 ▲ Next.js 16.3.5 (Turbopack)
 - Local:         http://localhost:3000
 - Network:       http://192.168.11.103:3000
 - Environments: .env.local
-✓ Ready in 1117ms
-✓ Running next.config.ts took 133ms
-
- GET / 307 in 3.7s (next.js: 3.3s, application-code: 337ms)
- GET / 307 in 85ms (next.js: 8ms, application-code: 78ms)
- GET /ar 200 in 2.0s (next.js: 1818ms, application-code: 186ms)
- GET /ar 200 in 102ms (next.js: 23ms, application-code: 79ms)
- GET /fr 200 in 103ms (next.js: 14ms, application-code: 89ms)
- GET /fr 200 in 116ms (next.js: 15ms, application-code: 101ms)
- GET /ar/products 200 in 1671ms (next.js: 1569ms, application-code: 102ms)
- GET /ar/products 200 in 120ms (next.js: 31ms, application-code: 89ms)
- GET /ar 200 in 165ms (next.js: 19ms, application-code: 147ms)
- GET /ar 200 in 87ms (next.js: 10ms, application-code: 77ms)
- GET /ar/articles 200 in 1652ms (next.js: 1560ms, application-code: 93ms)
- GET /ar/articles 200 in 95ms (next.js: 21ms, application-code: 74ms)
- GET /ar/admin/login 200 in 2.2s (next.js: 2.1s, application-code: 121ms)
- GET /ar/admin/login 200 in 87ms (next.js: 23ms, application-code: 64ms)
- GET /ar/admin 307 in 1480ms (next.js: 1387ms, application-code: 92ms)
- GET /ar/admin 307 in 119ms (next.js: 20ms, application-code: 99ms)
- GET /ar/products/nonexistent 404 in 1504ms (next.js: 1390ms, application-code: 114ms)
- GET /ar/products/nonexistent 404 in 106ms (next.js: 13ms, application-code: 93ms)
- GET /sitemap.xml 200 in 529ms (next.js: 478ms, application-code: 50ms)
- GET /sitemap.xml 200 in 15ms (next.js: 7ms, application-code: 9ms)
- GET /robots.txt 200 in 266ms (next.js: 254ms, application-code: 12ms)
- GET /robots.txt 200 in 21ms (next.js: 5ms, application-code: 15ms)
- GET / 307 in 110ms (next.js: 30ms, application-code: 80ms)
- GET /ar 200 in 119ms (next.js: 35ms, application-code: 84ms)
- GET /fr 200 in 110ms (next.js: 14ms, application-code: 96ms)
- GET /ar/products 200 in 126ms (next.js: 26ms, application-code: 100ms)
- GET /ar/admin/login 200 in 147ms (next.js: 39ms, application-code: 108ms)
- GET /ar/admin 307 in 194ms (next.js: 28ms, application-code: 166ms)
- GET /robots.txt 200 in 42ms (next.js: 16ms, application-code: 25ms)
- GET /sitemap.xml 200 in 24ms (next.js: 10ms, application-code: 14ms)
- GET /ar 200 in 258ms (next.js: 133ms, application-code: 125ms)
- GET /fr 200 in 59ms (next.js: 10ms, application-code: 49ms)
- GET /fr/products 200 in 166ms (next.js: 120ms, application-code: 46ms)
- GET /fr/articles 200 in 144ms (next.js: 84ms, application-code: 60ms)
- GET /fr/admin 307 in 163ms (next.js: 91ms, application-code: 72ms)
- GET /ar/admin 200 in 82ms (next.js: 7ms, generate-params: 8ms, application-code: 67ms)
- GET /fr/admin 200 in 56ms (next.js: 6ms, generate-params: 0.0ms, application-code: 50ms)
- GET /ar/admin/products 200 in 1331ms (next.js: 526ms, generate-params: 715ms, application-code: 90ms)
- GET /ar/admin/articles 200 in 1092ms (next.js: 278ms, generate-params: 767ms, application-code: 47ms)
- GET /ar/admin/categories 200 in 970ms (next.js: 256ms, generate-params: 668ms, application-code: 46ms)
- GET / 307 in 231ms (next.js: 190ms, application-code: 42ms)
- GET /ar 200 in 49ms (next.js: 7ms, generate-params: 6ms, application-code: 36ms)
-  Reload env: .env.local
-(node:19152) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
-In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
-
-To prepare for this change:
-- If you want the current behavior, explicitly use 'sslmode=verify-full'
-- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
-
-See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
-(Use `node --trace-warnings ...` to show where the warning was created)
- GET /ar 200 in 1349ms (next.js: 91ms, generate-params: 8ms, application-code: 1251ms)
- GET /fr 200 in 203ms (next.js: 5ms, generate-params: 6ms, application-code: 192ms)
- GET /ar/products 200 in 407ms (next.js: 16ms, generate-params: 6ms, application-code: 384ms)
- GET /ar/products/crochet-afghan-blanket 200 in 495ms (next.js: 121ms, application-code: 374ms)
- GET /ar/articles 200 in 233ms (next.js: 19ms, generate-params: 6ms, application-code: 208ms)
- GET /ar/articles/crochet-beginners-guide 200 in 1157ms (next.js: 958ms, application-code: 199ms)
- GET /ar/products/wool-storage-basket 200 in 373ms (next.js: 16ms, application-code: 357ms)
- GET /ar/admin/products/new 200 in 1887ms (next.js: 261ms, generate-params: 547ms, application-code: 1078ms)
- GET /ar/products/e2e-crud-check-product 200 in 1178ms (next.js: 10ms, application-code: 1168ms)
- GET /ar/admin/products 200 in 242ms (next.js: 12ms, generate-params: 5ms, application-code: 225ms)
- GET /ar/products 200 in 380ms (next.js: 5ms, generate-params: 6ms, application-code: 368ms)
- GET /ar/products/e2e-crud-check-product 404 in 1062ms (next.js: 10ms, application-code: 1052ms)
- GET / 307 in 67ms (next.js: 22ms, application-code: 45ms)
- GET /ar 200 in 1140ms (next.js: 7ms, generate-params: 8ms, application-code: 1125ms)
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-⨯ ./src/app/layout.tsx:1:1
-Error: Module not found: Can't resolve '../globals.css'
-[31m[1m>[0m [90m1 |[0m [36mimport[0m [32m"../globals.css"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m2 |[0m
-  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mRootLayout[0m({ children }: { children: [33mReact[0m.[33mReactNode[0m }) {
-  [90m4 |[0m   [36mreturn[0m children;
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
- GET /ar 200 in 1339ms (next.js: 150ms, generate-params: 7ms, application-code: 1182ms)
- GET /ar/articles 200 in 1528ms (next.js: 356ms, generate-params: 11ms, application-code: 1162ms)
- GET /ar/articles 200 in 231ms (next.js: 7ms, generate-params: 9ms, application-code: 215ms)
- GET /ar 200 in 1248ms (next.js: 35ms, generate-params: 9ms, application-code: 1204ms)
- GET /fr 200 in 231ms (next.js: 8ms, generate-params: 0.0ms, application-code: 223ms)
- GET /ar/products/crochet-afghan-blanket 200 in 621ms (next.js: 260ms, application-code: 361ms)
-  Reload env: .env.local
-  Reload env: .env.local
-  Reload env: .env.local
+✓ Ready in 730ms
+✓ Running next.config.ts took 74ms
+
+ GET /api/_wmtest 404 in 623ms (next.js: 476ms, application-code: 147ms)
+ GET /api/_wmtest 404 in 37ms (next.js: 9ms, application-code: 28ms)
+ GET /api/wmtest 200 in 1016ms (next.js: 980ms, application-code: 36ms)
+ GET /api/wmtest 200 in 13ms (next.js: 8ms, application-code: 6ms)
+ GET /api/wmtest 200 in 34ms (next.js: 7ms, application-code: 26ms)
+ GET /api/wmtest 500 in 203ms (next.js: 38ms, application-code: 165ms)
+ GET /api/wmtest 200 in 166ms (next.js: 7ms, application-code: 159ms)
+▲ Next.js 16.3.5 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.11.103:3000
+- Environments: .env.local
+✓ Ready in 501ms
+✓ Running next.config.ts took 80ms
+
+▲ Next.js 16.3.5 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.11.103:3000
+- Environments: .env.local
+✓ Ready in 485ms
+✓ Running next.config.ts took 71ms
+
+ POST /api/payments/mock 303 in 1993ms (next.js: 636ms, application-code: 1357ms)
+ GET /d/dl1.HTRB-X8Y8.1790348989.6oCuMBbwYwnUiDuXcUYgLCDmnkIcGKNf0CcigYTnb3M 200 in 2.5s (next.js: 1766ms, application-code: 694ms)
+ GET /d/dl1.HTRB-X8Y8.1790348989.6oCuMBbwYwnUiDuXcUYgLCDmnkIcGKNf0CcigYTnb3M 200 in 568ms (next.js: 14ms, application-code: 554ms)
+ GET /d/dl1.HTRB-X8Y8.1790348989.6oCuMBbwYwnUiDuXcUYgLCDmnkIcGKNf0CcigYTnb3M 200 in 553ms (next.js: 4ms, application-code: 549ms)
+ GET /d/dl1.HTRB-X8Y8.1790348989.6oCuMBbwYwnUiDuXcUYgLCDmnkIcGKNf0CcigYTnb3M 200 in 532ms (next.js: 12ms, application-code: 520ms)
+ GET /d/dl1.HTRB-X8Y8.1790348989.6oCuMBbwYwnUiDuXcUYgLCDmnkIcGKNf0CcigYTnb3M 200 in 559ms (next.js: 3ms, application-code: 555ms)
+ GET /d/dl1.HTRB-X8Y8.1790348989.6oCuMBbwYwnUiDuXcUYgLCDmnkIcGKNf0CcigYTnb3M 403 in 294ms (next.js: 10ms, application-code: 284ms)
+ GET /d/dl1.HTRB-X8Y8.1790348989.6oCuMBbwYwnUiDuXcUYgLCDmnkIcGKNf0CcigYTnb3Mx 404 in 10ms (next.js: 3ms, application-code: 6ms)
+ GET /d/whatever 404 in 17ms (next.js: 8ms, application-code: 9ms)
+ GET /ar/orders/HTRB-X8Y8?paid=1 200 in 4.3s (next.js: 2.8s, application-code: 1540ms)
+ GET /ar/products/crochet-afghan-blanket 200 in 2.2s (next.js: 1170ms, application-code: 1047ms)
+ GET /ar/pay/mock/HTRB-X8Y8 307 in 1338ms (next.js: 981ms, application-code: 356ms)
+ GET /ar/orders/HTRB-X8Y8 200 in 491ms (next.js: 14ms, application-code: 477ms)
+ GET /ar/admin/login 200 in 1447ms (next.js: 722ms, generate-params: 660ms, application-code: 65ms)
+ GET /ar/pay/mock/SHFU-AZFX 200 in 1247ms (next.js: 19ms, application-code: 1228ms)
+ POST /api/payments/mock 303 in 1288ms (next.js: 6ms, application-code: 1283ms)
+ GET /d/dl1.SHFU-AZFX.1790349040.Ftsaqiwy8ft6cV5TzDnP1Mz01btA4ZzmbbPz4d45myw 200 in 602ms (next.js: 13ms, application-code: 589ms)
+ GET /d/dl1.SHFU-AZFX.1790349040.Ftsaqiwy8ft6cV5TzDnP1Mz01btA4ZzmbbPz4d45myw 200 in 575ms (next.js: 4ms, application-code: 572ms)
+ GET /d/dl1.SHFU-AZFX.1790349040.Ftsaqiwy8ft6cV5TzDnP1Mz01btA4ZzmbbPz4d45myw 200 in 564ms (next.js: 11ms, application-code: 553ms)
+ GET /d/dl1.SHFU-AZFX.1790349040.Ftsaqiwy8ft6cV5TzDnP1Mz01btA4ZzmbbPz4d45myw 200 in 537ms (next.js: 4ms, application-code: 532ms)
+ GET /d/dl1.SHFU-AZFX.1790349040.Ftsaqiwy8ft6cV5TzDnP1Mz01btA4ZzmbbPz4d45myw 200 in 561ms (next.js: 10ms, application-code: 551ms)
+ GET /d/dl1.SHFU-AZFX.1790349040.Ftsaqiwy8ft6cV5TzDnP1Mz01btA4ZzmbbPz4d45myw 403 in 292ms (next.js: 3ms, application-code: 289ms)
+ GET /d/dl1.SHFU-AZFX.1790349040.Ftsaqiwy8ft6cV5TzDnP1Mz01btA4ZzmbbPz4d45mywx 404 in 15ms (next.js: 6ms, application-code: 10ms)
+ GET /d/whatever 404 in 11ms (next.js: 4ms, application-code: 8ms)
+ GET /ar/orders/SHFU-AZFX?paid=1 200 in 522ms (next.js: 24ms, application-code: 498ms)
+ GET /ar/products/crochet-afghan-blanket 200 in 1079ms (next.js: 16ms, application-code: 1063ms)
+ GET /ar/admin/login 200 in 69ms (next.js: 8ms, generate-params: 7ms, application-code: 54ms)
+ GET /ar/pay/mock/PGEY-FN7M 200 in 1243ms (next.js: 13ms, application-code: 1229ms)
+ POST /api/payments/mock 303 in 1316ms (next.js: 6ms, application-code: 1310ms)
