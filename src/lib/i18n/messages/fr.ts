@@ -3,11 +3,11 @@ import type { Messages } from "./ar";
 const messagesFr: Messages = {
   meta: {
     siteName: "Mes Créations au Crochet",
-    tagline: "Créations au crochet et fait main, fabriquées au Maroc",
+    tagline: "Créations au crochet et fait main, tricotées avec amour",
     description:
-      "Boutique marocaine de crochet et d'articles faits main : couvertures, poupées amigurumi, écharpes et paniers, avec des tutos pour apprendre le crochet. Produits numériques PDF téléchargeables immédiatement après un paiement en ligne sécurisé au Maroc.",
+      "Boutique de crochet et d'articles faits main : couvertures, poupées amigurumi, écharpes et paniers, avec des tutos pour apprendre le crochet. Produits numériques PDF téléchargeables immédiatement après un paiement en ligne sécurisé.",
     keywords:
-      "crochet, fait main, cadeaux, couverture au crochet, poupée amigurumi, écharpe en laine, apprendre le crochet, boutique en ligne Maroc, paiement en ligne, produits numériques pdf, artisanal marocain",
+      "crochet, fait main, cadeaux, couverture au crochet, poupée amigurumi, écharpe en laine, apprendre le crochet, boutique en ligne, paiement en ligne, produits numériques pdf, artisanal",
   },
   nav: {
     home: "Accueil",
@@ -16,7 +16,7 @@ const messagesFr: Messages = {
     admin: "Admin",
   },
   home: {
-    heroTitle: "Crochet et créations fait main, tricotés avec amour au Maroc",
+    heroTitle: "Crochet et créations fait main, tricotés avec amour",
     heroSubtitle:
       "Produits artisanaux authentiques, idées cadeaux originales et tutos pour apprendre le crochet pas à pas.",
     browseButton: "Voir les produits",

@@ -60,9 +60,9 @@ async function seed(): Promise<void> {
       title: "باترون وشاح صوف مطرز",
       titleFr: "Patron d'écharpe en laine brodée",
       description:
-        "باترون PDF لنقوش تقليدية مغربية على وشاح شتوي دافئ من الصوف.",
+        "باترون PDF لنقوش تقليدية راقية على وشاح شتوي دافئ من الصوف.",
       descriptionFr:
-        "Patron PDF de motifs traditionnels marocains pour une écharpe d'hiver chaude en laine.",
+        "Patron PDF de motifs traditionnels élégants pour une écharpe d'hiver chaude en laine.",
       priceMAD: 90,
       images: ["/img/shop/by-cyrus-3.jpg"],
       categoryId: bySlug["handmade"],

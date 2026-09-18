@@ -74,6 +74,17 @@ async function main() {
   check("e2e: english products 200", enProd.status === 200);
   check("e2e: english buy label", (await (await fetch(`${BASE}/en/products/crochet-afghan-blanket`)).text()).includes("Buy now"));
 
+  // storefront copy is country-free (global storefront)
+  const arHome = await (await fetch(`${BASE}/ar`)).text();
+  const frHome = await (await fetch(`${BASE}/fr`)).text();
+  const enHomeText = await enHome.text();
+  const frScarf = await (await fetch(`${BASE}/fr/products/handmade-wool-scarf`)).text();
+  check("e2e: ar home free of country mention", !arHome.includes("المغرب") && !arHome.includes("مغربية"));
+  check("e2e: fr home free of country mention", !frHome.toLowerCase().includes("maroc"));
+  check("e2e: en home free of country mention", !enHomeText.toLowerCase().includes("morocc"));
+  check("e2e: fr scarf product free of country mention", !frScarf.toLowerCase().includes("marocain"));
+  check("e2e: prices show approx usd/eur", frHome.includes("≈ ") || enHomeText.includes("≈ $"));
+
   // order starts pending
   let o = await getOrderByRef(order.ref);
   check("e2e: order created pending", o?.status === "pending");

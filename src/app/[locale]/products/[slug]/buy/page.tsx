@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { getProductBySlug } from "@/features/catalog/queries";
-import { formatMAD, localTitle } from "@/lib/format";
+import { approxTotal, formatMAD, localTitle } from "@/lib/format";
 import { BuyForm } from "@/components/buy-form";
 
 export const dynamic = "force-dynamic";
@@ -41,7 +41,10 @@ export default async function BuyPage({
           <p className="font-medium text-stone-900">{title}</p>
           <p className="text-sm text-stone-500">{t("summaryTitle")}</p>
         </div>
-        <p className="font-bold text-amber-800">{formatMAD(product.priceMAD, locale)}</p>
+        <p className="font-bold text-amber-800">
+          {formatMAD(product.priceMAD, locale)}{" "}
+          <span className="text-xs font-normal text-stone-500">{approxTotal(product.priceMAD, locale)}</span>
+        </p>
       </div>
       <BuyForm
         locale={locale as "ar" | "fr" | "en"}

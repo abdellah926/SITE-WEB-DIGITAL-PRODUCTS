@@ -218,8 +218,17 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 - Production E2E **35/35 PASS** incl. rib page 200 / IBAN + RIB + product title + **registered buyer name** shown / `wa.me/212603017198` / noindex / robots `/pay/`; full mock→watermark→cap→reject path still green.
 - Test orders truncated after run.
 
+## [GLOBAL STOREFRONT (country-free copy + approx USD/EUR) — v2.3 · 2026-09-18]
+
+- Removed all "المغرب / Morocco / Maroc / مغربي / marocain" mentions from meta tagline, descriptions, keywords, and hero titles across ar/fr/en, plus the seed + live product descriptions (scarf) — storefront is presented as a worldwide digital shop.
+- Prices now display MAD **plus** an approximate conversion (`approxTotal` in `src/lib/format.ts`: fixed approx rates MAD→USD 10, MAD→EUR 11; en→USD, ar/fr→EUR) on product cards, product detail, checkout summary, and the paid-order page. Base price stays `priceMAD` (account is in MAD) — rates adjustable in the constants.
+- e2e asserts no country mention on `/ar,/fr,/en` homes + scarf page, and approx-currency presence; production E2E **43/43 PASS**. Gates green. Deployed live.
+
+### STILL OPEN for "worldwide buying"
+- Card payment (CIH/CMI) seam is built (`PAYMENT_PROVIDER=cmi`) but merchant keys/kit still needed to accept real cards; RIB virement remains Morocco/personal-transfer oriented. Fix/revise the approx rates if you want them closer to the live market rate.
+
 ### STILL PENDING (operator)
-- `RIB_HOLDER` (account holder name) not set — add on Vercel for clarity to buyers (page hides the row while empty).
+- `RIB_HOLDER` (account holder name) not set on Vercel — page hides the row while empty.
 
 ---
 

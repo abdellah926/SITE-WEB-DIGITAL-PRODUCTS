@@ -5,7 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { getOrderByRef } from "@/features/orders/queries";
 import { getProductById } from "@/features/catalog/queries";
 import { signDownload, MAX_DOWNLOADS } from "@/features/orders/download-token";
-import { formatMAD } from "@/lib/format";
+import { approxTotal, formatMAD } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
@@ -44,7 +44,10 @@ export default async function OrderPage({
           {item ? (
             <div className="flex flex-col gap-2">
               <p className="font-medium text-stone-900">{item.title}</p>
-              <p className="font-bold text-amber-800">{formatMAD(item.priceMAD, locale)}</p>
+              <p className="font-bold text-amber-800">
+                {formatMAD(item.priceMAD, locale)}{" "}
+                <span className="text-xs font-normal text-stone-500">{approxTotal(item.priceMAD, locale)}</span>
+              </p>
             </div>
           ) : null}
           <a

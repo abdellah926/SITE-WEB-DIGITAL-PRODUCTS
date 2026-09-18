@@ -3,11 +3,11 @@ import type { Messages } from "./ar";
 const messagesEn: Messages = {
   meta: {
     siteName: "My Crochet Creations",
-    tagline: "Handmade crochet creations made in Morocco",
+    tagline: "Handmade crochet creations",
     description:
-      "Moroccan crochet & handmade shop: blankets, amigurumi dolls, scarves and baskets, with tutorials to learn crochet. Digital PDF products downloadable immediately after a secure online payment in Morocco.",
+      "Crochet & handmade shop: blankets, amigurumi dolls, scarves and baskets, with tutorials to learn crochet. Digital PDF products downloadable immediately after a secure online payment.",
     keywords:
-      "crochet, handmade, gifts, crochet blanket, amigurumi doll, wool scarf, learn crochet, online shop Morocco, online payment, digital products pdf, Moroccan handmade",
+      "crochet, handmade, gifts, crochet blanket, amigurumi doll, wool scarf, learn crochet, online shop, online payment, digital products pdf, handmade",
   },
   nav: {
     home: "Home",
@@ -16,7 +16,7 @@ const messagesEn: Messages = {
     admin: "Admin",
   },
   home: {
-    heroTitle: "Crochet and handmade creations, lovingly knitted in Morocco",
+    heroTitle: "Crochet and handmade creations, lovingly knitted",
     heroSubtitle:
       "Authentic handmade products, unique gift ideas and step-by-step crochet tutorials.",
     browseButton: "Browse products",

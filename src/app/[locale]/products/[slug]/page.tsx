@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { getProductBySlug, listCategories } from "@/features/catalog/queries";
 import { WatermarkedImage } from "@/components/watermarked-image";
-import { formatMAD, localTitle } from "@/lib/format";
+import { approxTotal, formatMAD, localTitle } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
@@ -58,7 +58,8 @@ export default async function ProductPage({
           ) : null}
           <h1 className="text-3xl font-bold text-stone-900">{title}</h1>
           <p className="text-2xl font-bold text-amber-800">
-            {formatMAD(product.priceMAD, locale)}
+            {formatMAD(product.priceMAD, locale)}{" "}
+            <span className="text-sm font-normal text-stone-500">{approxTotal(product.priceMAD, locale)}</span>
           </p>
           <p className="whitespace-pre-line text-stone-700">{description}</p>
 
