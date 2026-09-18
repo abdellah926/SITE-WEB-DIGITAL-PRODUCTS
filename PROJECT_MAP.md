@@ -196,7 +196,7 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 - New provider mode `rib` (`PAYMENT_PROVIDER=rib` on Vercel prod). `paymentMode()`: CMI (if configured) → rib → mock fallback. `orders.provider` is free text (no migration).
 - `buyProduct` already redirects by mode → `/[locale]/pay/[mode]/[ref]`; `rib` resolves to the new page. No action change needed.
 - `ribConfig()` (env): `RIB_IBAN` (default = real CIH IBAN), `RIB_NUMBER` (24-digit RIB, default set), `RIB_SWIFT`, `RIB_HOLDER` (optional), `NEXT_PUBLIC_SHOP_PHONE`. IBAN and RIB are the same account (IBAN = `MA` + check digits + RIB); both shown on the page with copy buttons.
-- `buildRibWhatsappUrl()` builds the buyer→seller confirm message (locale-aware, includes **product title** + price + order ref + IBAN); phone from `NEXT_PUBLIC_SHOP_PHONE`. (wa.me links carry text only — a product image needs WhatsApp Business API; out of scope.)
+- `buildRibWhatsappUrl()` builds the buyer→seller confirm message (locale-aware, includes **product title + registered buyer name + price + order ref + IBAN**, and prompts the buyer to send their **full name as it will appear on the transfer** + the **virement reference (réf)** for matching); phone from `NEXT_PUBLIC_SHOP_PHONE`. (wa.me links carry text only — a product image needs WhatsApp Business API; out of scope.)
 - New page `src/app/[locale]/pay/rib/[ref]/page.tsx`: amount + ref, IBAN/SWIFT/holder with copy buttons, WhatsApp confirm CTA, explanatory note. Pending-only (redirects to order page otherwise); provider-guarded; noindex (pay layout).
 
 ### Delivery (half-automatic)
@@ -215,7 +215,7 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 
 ### Verified live (site-web-digital-products.vercel.app)
 - Prod env: `PAYMENT_PROVIDER=rib`, `NEXT_PUBLIC_SHOP_PHONE=212603017198`, `RIB_IBAN=MA64 2300 1057 6579 1211 0187 0061`, `RIB_SWIFT=CIHMMAMC`. `NEXT_PUBLIC_SHOP_PHONE` re-added after earlier removal.
-- Production E2E **34/34 PASS** incl. rib page 200 / IBAN + RIB + **product title** shown / `wa.me/212603017198` / noindex / robots `/pay/`; full mock→watermark→cap→reject path still green.
+- Production E2E **35/35 PASS** incl. rib page 200 / IBAN + RIB + product title + **registered buyer name** shown / `wa.me/212603017198` / noindex / robots `/pay/`; full mock→watermark→cap→reject path still green.
 - Test orders truncated after run.
 
 ### STILL PENDING (operator)

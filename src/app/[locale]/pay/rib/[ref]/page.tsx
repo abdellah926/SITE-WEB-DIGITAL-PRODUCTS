@@ -37,6 +37,9 @@ export default async function RibPayPage({
           <span className="mx-2 text-stone-400">·</span>
           {t("refLabel")}: {order.ref}
         </p>
+        <p className="text-sm text-stone-500">
+          {t("ribBuyer")}: <span className="font-semibold text-stone-700">{order.name}</span>
+        </p>
       </div>
 
       <div className="flex flex-col gap-4 rounded-xl border border-stone-200 bg-white p-6">
@@ -81,7 +84,7 @@ export default async function RibPayPage({
         <p className="font-semibold text-green-800">{t("ribStep2Title")}</p>
         <p className="text-sm text-green-700">{t("ribStep2Body")}</p>
         <a
-          href={buildRibWhatsappUrl(priceText, order.ref, locale, productTitle)}
+          href={buildRibWhatsappUrl(priceText, order.ref, locale, productTitle, order.name)}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex w-fit items-center gap-2 rounded-full bg-green-600 px-6 py-3 font-semibold text-white hover:bg-green-700"

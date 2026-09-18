@@ -25,14 +25,15 @@ export function buildRibWhatsappUrl(
   priceText: string,
   orderRef: string,
   locale: string,
-  title: string
+  title: string,
+  buyerName: string
 ): string {
   const { iban, phone } = ribConfig();
   const digits = String(phone).replace(/\D/g, "").replace(/^0+/, "");
   const msg =
     locale === "ar"
-      ? `مرحبا، أؤكد تحويلي البنكي للمنتج «${title}» — الثمن: ${priceText} — مرجع الطلب: ${orderRef}. الحساب المستلم: ${iban}.`
-      : `Bonjour, je confirme mon virement bancaire pour le produit « ${title} » — Montant : ${priceText} — Référence : ${orderRef}. Compte bénéficiaire : ${iban}.`;
+      ? `مرحبا، منتوج: «${title}» — الثمن: ${priceText} — مرجع الطلب: ${orderRef} — الحساب المستلم: ${iban}. اسم المشتري المسجّل في الطلب: ${buyerName}. للتأكيد أرسل لنا: 1) اسمك الكامل كما سيظهر في عملية التحويل، و2) رقم مرجع التحويل (réf).`
+      : `Bonjour, produit : « ${title} » — Montant : ${priceText} — Référence commande : ${orderRef} — Compte bénéficiaire : ${iban}. Nom de l'acheteur saisi à la commande : ${buyerName}. Pour confirmer, envoyez-nous : 1) votre nom complet tel qu'il apparaîtra sur le virement, et 2) le numéro de référence (réf) du virement.`;
   return `https://wa.me/${digits}?text=${encodeURIComponent(msg)}`;
 }
 

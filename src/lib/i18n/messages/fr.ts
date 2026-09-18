@@ -73,7 +73,8 @@ const messagesFr: Messages = {
     ribStep1Title: "1. Effectuez le virement vers le compte ci-dessous",
     ribStep2Title: "2. Envoyez votre confirmation via WhatsApp",
     ribStep2Body:
-      "WhatsApp s'ouvre avec un message pré-rempli incluant votre référence. Dès réception du virement confirmée, vous recevrez le lien de téléchargement de votre fichier (PDF).",
+      "WhatsApp s'ouvre avec un message pré-rempli. Pour confirmer, envoyez-nous : (1) votre nom complet tel qu'il apparaîtra sur le virement, et (2) le numéro de référence (réf) du virement. Dès la correspondance vérifiée, vous recevrez le lien de téléchargement (PDF).",
+    ribBuyer: "Acheteur enregistré",
     ribWhatsappButton: "Envoyer la confirmation de virement via WhatsApp",
     ribCopy: "Copier",
     ribCopied: "Copié ✓",
