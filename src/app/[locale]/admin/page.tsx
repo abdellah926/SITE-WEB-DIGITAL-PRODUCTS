@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { countAllCatalog } from "@/features/catalog/queries";
 import { countAllContent } from "@/features/content/queries";
+import { countAllOrders } from "@/features/orders/queries";
 import { requireAdmin } from "@/features/admin/session";
 
 export const dynamic = "force-dynamic";
@@ -13,18 +14,19 @@ export default async function AdminDashboardPage({
 }) {
   const { locale } = await params;
   await requireAdmin(locale);
-  const [t, counts, articleCount] = await Promise.all([
+  const [t, counts, articleCount, orderCount] = await Promise.all([
     getTranslations("admin"),
     countAllCatalog(),
     countAllContent(),
+    countAllOrders(),
   ]);
 
   const issues: string[] = [];
   if (!process.env.DATABASE_URL) issues.push(t("noDb"));
-  if (!process.env.NEXT_PUBLIC_SHOP_PHONE) issues.push(t("phoneMissing"));
 
   const cards = [
     { label: t("totalProducts"), value: counts.products, href: `/${locale}/admin/products` },
+    { label: t("totalOrders"), value: orderCount, href: `/${locale}/admin/orders` },
     { label: t("totalArticles"), value: articleCount, href: `/${locale}/admin/articles` },
     { label: t("totalCategories"), value: counts.categories, href: `/${locale}/admin/categories` },
   ];
@@ -39,7 +41,7 @@ export default async function AdminDashboardPage({
         </p>
       ))}
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {cards.map((c) => (
           <Link
             key={c.label}

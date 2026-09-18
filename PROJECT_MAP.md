@@ -149,3 +149,39 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 | **M5** | Telemetry & hardening | Build done; `<Analytics/>` wired (client-injected, active on Vercel); selfcheck (12/12) + dev/prod smoke suite recorded in `PROJECT_MAP`+logs | Lighthouse run + console-error sweep on deployed preview |
 
 **Out of scope now**: payments, cart, accounts, reviews, newsletters, stock/variants, media service, multi-admin.
+
+---
+
+## [DIGITAL PIVOT — v2 storefront (payment + PDF delivery) · 2026-09-18]
+
+### Decisions (this session)
+- **Business pivot**: digital products store — sell crochet **photo patterns as PDFs**; drop WhatsApp/COD entirely (no `wa.me` anywhere).
+- **Gateway**: CIH **CMI** (CIB "3D_PAY_HOSTING" flow). `PAYMENT_PROVIDER=mock` until merchant keys arrive → `cmi` when `PAYMENT_PROVIDER=cmi` + `CMI_CLIENT_ID`/`CMI_STORE_KEY`/`CMI_BASE_URI` set.
+- **Delivery**: automatic, secured — signed expiring download link after payment; PDF is watermarked **per buyer** (order ref + email + name, diagonal, per page) via pdf-lib **before** streaming. 5-download / 7-day cap.
+- **Honest limit (stated to user)**: 100% anti-screenshot is impossible; protection = low-res watermarked previews + post-payment delivery + buyer watermark (traceability).
+
+### Schema (migrations `0001`, `0002` applied live on Neon)
+- `products.fileKey text`, `products.fileMime text default 'application/pdf'`
+- `orders(id, ref UNIQUE, name, email, locale default 'ar', currency default 'MAD', totalMAD, status pending|paid|failed, provider cmi|mock, providerRef, downloadCount, paidAt, createdAt, updatedAt)`
+- `order_items(id, orderId FK cascade, productId FK, title, priceMAD, fileKey, qty default 1)` — `countAllOrders()` added.
+
+### Code added (all new)
+- `src/features/orders/{ref,queries,download-token,files,pdf,payment,actions}.ts` — refs `XXXX-YYYY`; HMAC tokens `dl1.ref.exp.sig` (SHA-256 base64url, ADMIN_SECRET); path-traversal-safe reads under `private/`; watermark via **Geist-Regular.ttf (MIT, vendored `private/fonts/`)** + `@pdf-lib/fontkit` — **avoids pdf-lib's broken `@pdf-lib/standard-fonts` `.json` under Node v26**; CMI form/hash (HMAC-SHA512 base64 over sorted `key=value` pipe-joined, per CMI kit — exact field order to be re-verified with merchant kit); mock fallback.
+- Pages: `[locale]/products/[slug]/buy` (BuyForm), `[locale]/pay/cmi/[ref]` (auto-submit), `[locale]/pay/mock/[ref]` (simulate button), `[locale]/orders/[ref]` (status + download link), `[locale]/admin/orders` (+ admin dashboard total orders card), API `api/payments/mock`, `api/payments/cmi/{return,callback}`, download route `d/[token]`.
+- `src/components/{buy-form,cmi-auto-form,watermarked-image}.tsx` — WatermarkedImage (drag/contextmenu/user-select guards + overlay) applied to product-card, gallery and product detail.
+- Security: `next.config.ts` headers (CSP incl. `form-action https://*.cmi.co.ma`, X-Content-Type-Options, X-Frame-Options DENY, Referrer-Policy, Permissions-Policy; no-store/noindex on `/d`, `/admin`, `/api/payments`), robots disallow (`/admin`, `/d`, `/orders`, `/api/payments`, `/buy`), admin+pay+orders layouts `<meta robots noindex>`, login rate-limit (8 tries / 10 min in-memory), `NEXT_PUBLIC_SHOP_PHONE` removed from Vercel env.
+- Seed: products now digital patterns (ar/fr metadata rewritten — no more WhatsApp/COD), `fileKey` set, `inStock true` ×5; `scripts/gen-seed-pdfs.cjs` generates placeholder PDFs into `private/files/`.
+
+### Verified
+- Gates green: `tsc --noEmit`, `eslint`, `next build`, `selfcheck` (18/18).
+- **Local E2E (27/27)**: order pending → mock pay page → simulate 303 → paid → order page → `/d/<token>` `%PDF` watermarked → cap 5 → tampered/garbage rejected → product page no `wa.me`, buy link → admin noindex.
+- **PRODUCTION E2E on Vercel (27/27)**: same flow live at `site-web-digital-products.vercel.app` incl. on-platform watermarking; robots.txt + CSP/no-sniff/DENY verified over HTTPS.
+- Note: `@pdf-lib/standard-fonts` `.compressed.json` files crash under Node v26 ESM-interception (tsx file-mode) → all runtime/bundled paths use the vendored TTF via fontkit (works on Vercel Node runtime).
+
+### PENDING / operator actions
+- **CIH merchant credentials** (clientid/storekey/endpoint) → flip `PAYMENT_PROVIDER=cmi` + set `CMI_CLIENT_ID/CMI_STORE_KEY/CMI_BASE_URI` in Vercel env; verify CMI test payment E2E; confirm hash field set/order with CMI kit.
+- **Move real paid PDFs out of the repo** to object storage (Vercel Blob / R2 / S3) before selling real content — `private/files/*` currently holds only placeholders (OK to ship).
+- **Rotate Neon credentials** (shared in chat this session) once live.
+- `dev.log` is tracked in git (runtime noise) — remove + add `dev*.log` to `.gitignore`.
+- Watermark font is Latin-only (Geist): Arabic buyer names render as blanks on the PDF line; email+ref (ASCII) always present. Add an Arabic TTF if needed.
+- Mock orders left after E2E are truncated from DB (manual runs of `scripts/cleanup-orders.ts`; not committed).

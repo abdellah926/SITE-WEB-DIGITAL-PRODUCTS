@@ -28,8 +28,39 @@ export const products = pgTable("products", {
   categoryId: integer("category_id").references(() => categories.id),
   inStock: boolean("in_stock").notNull().default(true),
   featured: boolean("featured").notNull().default(false),
+  fileKey: text("file_key"),
+  fileMime: text("file_mime").notNull().default("application/pdf"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const orders = pgTable("orders", {
+  id: serial("id").primaryKey(),
+  ref: text("ref").notNull().unique(),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  locale: text("locale").notNull().default("ar"),
+  currency: text("currency").notNull().default("MAD"),
+  totalMAD: integer("total_mad").notNull(),
+  status: text("status").notNull().default("pending"),
+  provider: text("provider").notNull().default("mock"),
+  providerRef: text("provider_ref"),
+  downloadCount: integer("download_count").notNull().default(0),
+  paidAt: timestamp("paid_at", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const orderItems = pgTable("order_items", {
+  id: serial("id").primaryKey(),
+  orderId: integer("order_id")
+    .notNull()
+    .references(() => orders.id, { onDelete: "cascade" }),
+  productId: integer("product_id").references(() => products.id),
+  title: text("title").notNull(),
+  priceMAD: integer("price_mad").notNull(),
+  fileKey: text("file_key").notNull(),
+  qty: integer("qty").notNull().default(1),
 });
 
 export const articles = pgTable(
@@ -50,3 +81,5 @@ export const articles = pgTable(
 export type Product = typeof products.$inferSelect;
 export type Category = typeof categories.$inferSelect;
 export type Article = typeof articles.$inferSelect;
+export type Order = typeof orders.$inferSelect;
+export type OrderItem = typeof orderItems.$inferSelect;

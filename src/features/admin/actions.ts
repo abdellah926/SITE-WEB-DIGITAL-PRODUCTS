@@ -1,6 +1,6 @@
 "use server";
 
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
@@ -10,6 +10,7 @@ import { getDb } from "@/lib/db/client";
 import { articles, categories, products } from "@/lib/db/schema";
 import { log } from "@/lib/log";
 import { slugify } from "@/lib/format";
+import { markPaid } from "@/features/orders/queries";
 import { ADMIN_COOKIE, issueToken, isAdmin, passwordOk } from "./session";
 
 export interface FormState {
@@ -68,12 +69,30 @@ async function guard(): Promise<{ error?: never } | { error: "unauthorized" }> {
 
 /* ---------- auth ---------- */
 
+const LOGIN_WINDOW_MS = 10 * 60 * 1000;
+const LOGIN_MAX_ATTEMPTS = 8;
+const attempts = new Map<string, number[]>();
+
+function rateLimited(key: string): boolean {
+  const now = Date.now();
+  const recent = (attempts.get(key) ?? []).filter((t) => now - t < LOGIN_WINDOW_MS);
+  recent.push(now);
+  attempts.set(key, recent);
+  return recent.length > LOGIN_MAX_ATTEMPTS;
+}
+
 export async function loginAction(
   _prev: FormState,
   formData: FormData
 ): Promise<FormState> {
   const locale = String(formData.get("locale") ?? "ar");
   const password = String(formData.get("password") ?? "");
+  const hdrs = await headers();
+  const ip = hdrs.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
+  if (rateLimited(ip)) {
+    log("warn", "admin login rate-limited", { ip });
+    return { error: "invalidPassword" };
+  }
   if (!passwordOk(password)) {
     log("warn", "admin login rejected");
     return { error: "invalidPassword" };
@@ -94,6 +113,23 @@ export async function logoutAction(): Promise<void> {
   const cookieStore = await cookies();
   cookieStore.delete(ADMIN_COOKIE);
   redirect("/ar");
+}
+
+/* ---------- orders ---------- */
+
+export async function markOrderPaidAction(formData: FormData): Promise<void> {
+  const g = await guard();
+  if (g.error) redirect("/ar/admin/login");
+  const id = String(formData.get("id") ?? "");
+  const locale = formData.get("locale") === "fr" ? "fr" : "ar";
+  if (/^\d+$/.test(id)) {
+    const ok = await markPaid(Number(id), "manual-admin");
+    if (ok) {
+      log("info", "order marked paid manually", { id });
+      revalidatePath("/", "layout");
+    }
+  }
+  redirect(`/${locale}/admin/orders`);
 }
 
 /* ---------- products ---------- */

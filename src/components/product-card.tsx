@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import { formatMAD } from "@/lib/format";
 import type { Product } from "@/lib/db/schema";
+import { WatermarkedImage } from "./watermarked-image";
 
 export function ProductCard({ locale, product }: { locale: "ar" | "fr"; product: Product }) {
   const title = locale === "fr" ? product.titleFr : product.title;
@@ -10,12 +10,11 @@ export function ProductCard({ locale, product }: { locale: "ar" | "fr"; product:
       href={`/${locale}/products/${product.slug}`}
       className="group flex flex-col overflow-hidden rounded-xl border border-stone-200 bg-white transition-shadow hover:shadow-md"
     >
-      <Image
+      <WatermarkedImage
         src={product.images[0] ?? "/img/crochet-blanket.svg"}
         alt={title}
         width={600}
         height={450}
-        unoptimized
         className="h-44 w-full object-cover"
       />
       <div className="flex flex-1 flex-col gap-1 p-4">

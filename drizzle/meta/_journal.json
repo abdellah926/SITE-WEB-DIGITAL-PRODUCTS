@@ -8,6 +8,20 @@
       "when": 1789730909457,
       "tag": "0000_slim_sinister_six",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1789741893565,
+      "tag": "0001_conscious_hawkeye",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1789742326313,
+      "tag": "0002_red_juggernaut",
+      "breakpoints": true
     }
   ]
 }
