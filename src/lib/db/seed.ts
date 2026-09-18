@@ -31,7 +31,7 @@ async function seed(): Promise<void> {
         "باترون PDF مفصّل بالخطوات والرسومات لصنع بطانية كروشي من الصوف الطبيعي بعدة ألوان وتصاميم. مقاس 120×180 سم. يُسلَّم مباشرة بعد الدفع.",
       descriptionFr:
         "Patron PDF détaillé pas à pas pour réaliser une couverture en laine naturelle, plusieurs couleurs et motifs. Taille 120×180 cm. Livré instantanément après paiement.",
-      priceMAD: 350,
+      priceMAD: 50,
       images: ["/img/shop/by-cyrus-1.jpg"],
       categoryId: bySlug["crochet"],
       inStock: true,
@@ -47,7 +47,7 @@ async function seed(): Promise<void> {
         "باترون PDF كامل مصوّر لصنع دمية أميغورومي لطيفة بإتقان، مناسب كهدية للأطفال.",
       descriptionFr:
         "Patron PDF complet illustré pour réaliser une jolie poupée amigurumi, parfaite en cadeau pour les enfants.",
-      priceMAD: 120,
+      priceMAD: 50,
       images: ["/img/shop/by-cyrus-2.jpg"],
       categoryId: bySlug["crochet"],
       inStock: true,
@@ -63,7 +63,7 @@ async function seed(): Promise<void> {
         "باترون PDF لنقوش تقليدية راقية على وشاح شتوي دافئ من الصوف.",
       descriptionFr:
         "Patron PDF de motifs traditionnels élégants pour une écharpe d'hiver chaude en laine.",
-      priceMAD: 90,
+      priceMAD: 50,
       images: ["/img/shop/by-cyrus-3.jpg"],
       categoryId: bySlug["handmade"],
       inStock: true,
@@ -79,7 +79,7 @@ async function seed(): Promise<void> {
         "باترون PDF لصنع سلة متينة من خيوط القطن المحبوك للتنظيم والديكور.",
       descriptionFr:
         "Patron PDF pour réaliser un panier robuste en fil de coton tricoté pour le rangement et la décoration.",
-      priceMAD: 65,
+      priceMAD: 50,
       images: ["/img/shop/by-cyrus-4.jpg"],
       categoryId: bySlug["handmade"],
       inStock: true,
@@ -95,7 +95,7 @@ async function seed(): Promise<void> {
         "دليل إلكتروني مصوّر خطوة بخطوة: الغرز الأساسية، حل المشاكل الشائعة، وتسعة باترونات سهلة للبدء.",
       descriptionFr:
         "Guide électronique illustré pas à pas : mailles de base, dépannage et neuf patrons faciles pour débuter.",
-      priceMAD: 200,
+      priceMAD: 50,
       images: ["/img/shop/by-cyrus-5.jpg"],
       categoryId: bySlug["kits"],
       inStock: true,

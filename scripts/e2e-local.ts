@@ -84,6 +84,12 @@ async function main() {
   check("e2e: en home free of country mention", !enHomeText.toLowerCase().includes("morocc"));
   check("e2e: fr scarf product free of country mention", !frScarf.toLowerCase().includes("marocain"));
   check("e2e: prices show approx usd/eur", frHome.includes("≈ ") || enHomeText.includes("≈ $"));
+  const enBlanket = await (await fetch(`${BASE}/en/products/crochet-afghan-blanket`)).text();
+  check("e2e: price approx is 5 usd", enBlanket.includes("≈ $5"));
+  const rootEn = await fetch(`${BASE}/`, { headers: { Cookie: "NEXT_LOCALE=en" } });
+  check("e2e: root follows cookie to english", rootEn.url.replace(/\/?$/, "").endsWith("/en"));
+  const arMidEn = await fetch(`${BASE}/ar/products`, { headers: { Cookie: "NEXT_LOCALE=en" } });
+  check("e2e: ar page follows cookie to english", arMidEn.url.replace(/\/?$/, "").endsWith("/en/products"));
 
   // order starts pending
   let o = await getOrderByRef(order.ref);

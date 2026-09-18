@@ -224,8 +224,14 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 - Prices now display MAD **plus** an approximate conversion (`approxTotal` in `src/lib/format.ts`: fixed approx rates MAD→USD 10, MAD→EUR 11; en→USD, ar/fr→EUR) on product cards, product detail, checkout summary, and the paid-order page. Base price stays `priceMAD` (account is in MAD) — rates adjustable in the constants.
 - e2e asserts no country mention on `/ar,/fr,/en` homes + scarf page, and approx-currency presence; production E2E **43/43 PASS**. Gates green. Deployed live.
 
+## [LOCALE LOCK + NEW PRICING — v2.4 · 2026-09-18]
+
+- **Locale lock via middleware** (`src/middleware.ts`): any request whose `NEXT_LOCALE` cookie is set is forced to that locale — root `/` and even `/ar|/fr|/en` paths redirect to the remembered language. Once you pick a language it sticks across the whole site (home included); `_next/api/d/static` are exempt. Reverting is just clicking another language pill.
+- **Pricing lowered**: every product seeded + live DB row now `priceMAD: 50` (≈ **$5** on English display, ≈ 5 € on ar/fr via the approx converter).
+- Go-live E2E: **47/47 PASS** (incl. cookie-lock on `/`→`/en` and `/ar/products`→`/en/products`, price "≈ $5"). Gates green. Deployed live.
+
 ### STILL OPEN for "worldwide buying"
-- Card payment (CIH/CMI) seam is built (`PAYMENT_PROVIDER=cmi`) but merchant keys/kit still needed to accept real cards; RIB virement remains Morocco/personal-transfer oriented. Fix/revise the approx rates if you want them closer to the live market rate.
+- Card payment (CIH/CMI) seam is built (`PAYMENT_PROVIDER=cmi`) but merchant keys/kit still needed to accept real cards; RIB virement remains Morocco/personal-transfer oriented.
 
 ### STILL PENDING (operator)
 - `RIB_HOLDER` (account holder name) not set on Vercel — page hides the row while empty.
