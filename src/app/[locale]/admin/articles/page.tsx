@@ -39,7 +39,7 @@ export default async function AdminArticlesPage({
               <div className="min-w-0">
                 <p className="truncate font-medium text-stone-900">{a.title}</p>
                 <p className="text-sm text-stone-500">
-                  {a.locale === "ar" ? "العربية" : "Français"} · {a.slug}
+                  {a.locale ===  "en"} · {a.slug}
                 </p>
               </div>
               <div className="flex shrink-0 items-center gap-3">

@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return { title: locale === "ar" ? "مقالات ودروس" : "Articles & tutorials" };
+  return { title: locale === "en" ? "Articles & tutorials" : "Articles & tutorials" };
 }
 
 export default async function ArticlesPage({
@@ -33,7 +33,7 @@ export default async function ArticlesPage({
       {articles.length > 0 ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((a) => (
-            <ArticleCard key={a.id} locale={locale as "ar" | "fr" | "en"} article={a} />
+            <ArticleCard key={a.id} locale={locale as  "en"} article={a} />
           ))}
         </div>
       ) : (

@@ -19,15 +19,15 @@ export default async function LocaleLayout({
   const { locale } = await params;
   setRequestLocale(locale);
   const messages = await getMessages();
-  const dir = locale === "ar" ? "rtl" : "ltr";
+  const dir = locale === "en" ? "rtl" : "ltr";
 
   return (
     <html lang={locale} dir={dir} className="h-full">
       <body className="flex min-h-dvh flex-col bg-stone-50 text-stone-900">
         <NextIntlClientProvider messages={messages}>
-          <SiteHeader locale={locale as "ar" | "fr" | "en"} />
+          <SiteHeader locale={locale as  "en"} />
           <main className="flex-1">{children}</main>
-          <SiteFooter locale={locale as "ar" | "fr" | "en"} />
+          <SiteFooter locale={locale as "en"} />
         </NextIntlClientProvider>
         <Analytics />
       </body>
