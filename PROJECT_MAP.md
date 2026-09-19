@@ -287,4 +287,13 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
   - `DIGITAL PRODUCT — PDF ONLY` badge rendered directly above the Buy Now button (product has a `fileKey`).
 - TDD: 2 new asserts (hero wording, spec+badge) red against previous build, green after; prod E2E **52/52 PASS**, gates green, deployed live. Test orders cleaned up.
 
+## [NEW PRODUCT PHOTOS (CYRUS 7–12) + ALL-PATTERNS BUNDLE — v2.9 · 2026-09-19]
+
+- **New product photos** (user-provided `CYRUS7.png`…`CYRUS12.png`, note the source file `CYRUS9].png` has a stray `]`): resized via the standard `System.Drawing` pipeline (max 1400px, JPEG q82) → `public/img/shop/by-cyrus-{7..12}.jpg`. Assignment confirmed by user: **7→Amigurumi Doll, 8→Wool Scarf, 9→Storage Basket, 10→Afghan Blanket, 11→Beginner's Guide, 12→Bundle**.
+- **New bundle product** `crochet-patterns-bundle` — "Complete Crochet Patterns Bundle – PDF", all 5 patterns at a special price **$19.99 ≈ 193 MAD** (separate total would be $29.05), image `by-cyrus-12.jpg`, category Kits, `featured`, placeholder `crochet-bundle.pdf` (40-page watermark-stamped mock) generated via `scripts/gen-seed-pdfs.cjs` (entry added; all PDFs regenerated deterministically).
+- Applied in `seed.ts` + live Neon DB (update images by slug + idempotent bundle insert). Note: product content is DB-driven, so the product-detail pages served the new price/paths immediately; the deploy ships the static image files + updated seed.
+- Prod E2E **61/61 PASS** (new asserts: bundle page $19.99 + by-cyrus-12.jpg, bundle on products list, bundle on home gallery, blanket page uses by-cyrus-10.jpg), all 6 `/img/shop/by-cyrus-*.jpg` return **200** on prod, gates green, deployed live. Test orders cleaned up.
+
+---
+
 ---

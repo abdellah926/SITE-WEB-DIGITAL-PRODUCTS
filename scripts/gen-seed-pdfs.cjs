@@ -8,6 +8,7 @@ const FILES = [
   { key: "handmade-wool-scarf.pdf", title: "Handmade Wool Scarf Pattern" },
   { key: "wool-storage-basket.pdf", title: "Wool Storage Basket Pattern" },
   { key: "crochet-beginner-kit.pdf", title: "Crochet Beginner Guide" },
+  { key: "crochet-bundle.pdf", title: "Complete Crochet Patterns Bundle" },
 ];
 
 const OUT_DIR = path.join(process.cwd(), "private", "files");
