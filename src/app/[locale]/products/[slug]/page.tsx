@@ -8,6 +8,8 @@ import { localTitle } from "@/lib/format";
 import { PriceBlock } from "@/components/price";
 import { TrustBlock } from "@/components/trust";
 
+const SPEC_EMOJIS = ["📘", "📸", "🧶", "✂️", "📐", "🎓", "⚡"];
+
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
@@ -61,7 +63,52 @@ export default async function ProductPage({
           <h1 className="text-3xl font-bold text-stone-900">{title}</h1>
           <PriceBlock product={product} locale={locale} big />
           <p className="whitespace-pre-line text-stone-700">{description}</p>
+
+          <section className="flex flex-col gap-4">
+            <div className="rounded-xl border border-stone-200 bg-white p-4">
+              <h2 className="text-sm font-bold uppercase tracking-wide text-stone-900">
+                {t("specTitle")}
+              </h2>
+              <ul className="mt-2 grid grid-cols-1 gap-1.5 text-sm text-stone-700 sm:grid-cols-2">
+                {(t.raw("specItems") as string[]).map((item, i) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <span aria-hidden="true">{SPEC_EMOJIS[i]}</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-xl border border-stone-200 bg-white p-4">
+              <h2 className="text-sm font-bold uppercase tracking-wide text-stone-900">
+                {t("perfectTitle")}
+              </h2>
+              <ul className="mt-2 flex flex-wrap gap-2 text-sm text-stone-700">
+                {(t.raw("perfectItems") as string[]).map((item) => (
+                  <li key={item} className="rounded-full bg-amber-50 px-3 py-1">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <dl className="mt-3 grid grid-cols-1 gap-2 border-t border-stone-100 pt-3 text-sm sm:grid-cols-2">
+                <div className="flex justify-between gap-2">
+                  <dt className="text-stone-500">{t("skillLabel")}</dt>
+                  <dd className="font-medium text-stone-900">{t("skillValue")}</dd>
+                </div>
+                <div className="flex justify-between gap-2">
+                  <dt className="text-stone-500">{t("langLabel")}</dt>
+                  <dd className="font-medium text-stone-900">{t("langValue")}</dd>
+                </div>
+              </dl>
+            </div>
+          </section>
+
           <TrustBlock />
+
+          {product.fileKey ? (
+            <p className="max-w-sm rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-center text-xs font-bold uppercase tracking-wide text-amber-900">
+              {t("digitalBadge")}
+            </p>
+          ) : null}
 
           {product.inStock && product.fileKey ? (
             <Link

@@ -83,6 +83,7 @@ async function main() {
   check("e2e: ar home free of country mention", !arHome.includes("المغرب") && !arHome.includes("مغربية"));
   check("e2e: fr home free of country mention", !frHome.toLowerCase().includes("maroc"));
   check("e2e: en home free of country mention", !enHomeText.toLowerCase().includes("morocc"));
+  check("e2e: english hero positions digital pdfs", enHomeText.includes("Crochet Patterns &amp; Digital Guides") || enHomeText.includes("Crochet Patterns & Digital Guides") || enHomeText.includes("Instant PDF downloads"));
   check("e2e: fr scarf product free of country mention", !frScarf.toLowerCase().includes("marocain"));
   check("e2e: prices show approx usd/eur", frHome.includes("≈ ") || enHomeText.includes("≈ $"));
   const enBlanket = await (await fetch(`${BASE}/en/products/crochet-afghan-blanket`)).text();
@@ -90,6 +91,10 @@ async function main() {
   check("e2e: english product shows english title", enBlanket.includes("Crochet Afghan Blanket Pattern"));
   check("e2e: english product shows english description", enBlanket.includes("Create your own beautiful crochet Afghan blanket"));
   check("e2e: english product shows trust block", enBlanket.includes("🔒") && enBlanket.includes("Instant download"));
+  check("e2e: english product shows spec + digital badge", enBlanket.includes("DIGITAL PRODUCT") && enBlanket.includes("What's included") && enBlanket.includes("Perfect for"));
+  check("e2e: english product shows no stale price", !enBlanket.includes("350"));
+  const enBuy = await (await fetch(`${BASE}/en/products/crochet-afghan-blanket/buy`)).text();
+  check("e2e: english buy page price matches product", enBuy.includes("$4.99") && !enBuy.includes("350"));
   check("e2e: english home gallery shows english title", enHomeText.includes("Crochet Afghan Blanket Pattern"));
   const rootEn = await fetch(`${BASE}/`, { headers: { Cookie: "NEXT_LOCALE=en" } });
   check("e2e: root follows cookie to english", rootEn.url.replace(/\/?$/, "").endsWith("/en"));

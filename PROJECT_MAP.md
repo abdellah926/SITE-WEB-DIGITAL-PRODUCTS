@@ -276,4 +276,15 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 - TDD: new e2e assert "root defaults to english" failed against the old build (red), passed after deploy (green). Prod E2E **48/48 PASS** on canonical alias, gates green, deployed live. Root probe: `GET /` → **307 /en**.
 - Test orders cleaned up.
 
+## [SALES CONVERSION PASS — v2.8 · 2026-09-19]
+
+- **Price consistency guard (🔴 critical)**: live audit found **no stale prices** — `/en` product card, detail, and buy page all show `$4.99` (the reported "MAD 350 ≈ $35" was the user's browser cache of the pre-2026 pricing). Added 2 regression e2e asserts: detail page never contains `350`, and buy page price matches product (`$4.99`, no `350`).
+- **Home hero repositioned to selling the right product**: title → "Crochet Patterns & Digital Guides for Beginners and Creators" (all 3 locales), subheadline → "Instant PDF downloads • Step-by-step instructions • Learn, create & crochet", CTA → "Explore Crochet Patterns". Users arriving from ads now immediately understand it's **digital PDFs**.
+- **Product detail conversion blocks** (above the Buy Now button, i18n in ar/fr/en):
+  - `What's included` — 7 items with emojis 📘📸🧶✂️📐🎓⚡ (Detailed PDF pattern, Step-by-step photos, Materials list, Required tools, Finished size, Difficulty level, Instant download).
+  - `Perfect for` — chips: Crochet beginners / Handmade lovers / DIY creators / Gift makers.
+  - `Skill level` + `Language` rows (currently "Beginner / Intermediate", "English" — static defaults; real PDFs are still placeholders, so these claims must be honored/corrected when the real files are uploaded).
+  - `DIGITAL PRODUCT — PDF ONLY` badge rendered directly above the Buy Now button (product has a `fileKey`).
+- TDD: 2 new asserts (hero wording, spec+badge) red against previous build, green after; prod E2E **52/52 PASS**, gates green, deployed live. Test orders cleaned up.
+
 ---
