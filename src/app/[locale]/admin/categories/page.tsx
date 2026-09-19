@@ -36,7 +36,7 @@ export default async function AdminCategoriesPage({
                   <span className="text-sm text-stone-400">({c.slug})</span>
                 </p>
                 <p className="text-sm text-stone-500">
-                  {c.name} · {c.nameFr} · {c.nameEn}
+                   {c.nameEn}
                 </p>
               </div>
               <div className="flex shrink-0 items-center gap-3">
