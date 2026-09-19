@@ -8,12 +8,12 @@ import { WatermarkedImage } from "./watermarked-image";
 type Cell = { image: string; slug: string | null; big?: boolean };
 
 const CELLS: Cell[] = [
-  { image: "/img/shop/by-cyrus-1.jpg", slug: "crochet-afghan-blanket", big: true },
-  { image: "/img/shop/by-cyrus-2.jpg", slug: "amigurumi-doll" },
-  { image: "/img/shop/by-cyrus-3.jpg", slug: "handmade-wool-scarf" },
-  { image: "/img/shop/by-cyrus-4.jpg", slug: "wool-storage-basket" },
-  { image: "/img/shop/by-cyrus-5.jpg", slug: "crochet-beginner-kit" },
-  { image: "/img/shop/by-cyrus-6.jpg", slug: null },
+  { image: "/img/shop/by-cyrus-10.jpg", slug: "crochet-afghan-blanket", big: true },
+  { image: "/img/shop/by-cyrus-7.jpg", slug: "amigurumi-doll" },
+  { image: "/img/shop/by-cyrus-8.jpg", slug: "handmade-wool-scarf" },
+  { image: "/img/shop/by-cyrus-9.jpg", slug: "wool-storage-basket" },
+  { image: "/img/shop/by-cyrus-11.jpg", slug: "crochet-beginner-kit" },
+  { image: "/img/shop/by-cyrus-12.jpg", slug: "crochet-patterns-bundle" },
 ];
 
 export async function GalleryMontage({

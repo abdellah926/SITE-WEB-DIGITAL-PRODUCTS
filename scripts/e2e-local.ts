@@ -101,6 +101,7 @@ async function main() {
   check("e2e: bundle product live", enBundle.includes("Complete Crochet Patterns Bundle") && enBundle.includes("$19.99") && enBundle.includes("by-cyrus-12.jpg"));
   check("e2e: bundle visible in products list", enProdText.includes("Complete Crochet Patterns Bundle"));
   check("e2e: bundle on home gallery", enHomeText.includes("Complete Crochet Patterns Bundle"));
+  check("e2e: home gallery uses new cyrus images", enHomeText.includes("by-cyrus-12.jpg") && !enHomeText.includes("by-cyrus-2.jpg"));
   const rootEn = await fetch(`${BASE}/`, { headers: { Cookie: "NEXT_LOCALE=en" } });
   check("e2e: root follows cookie to english", rootEn.url.replace(/\/?$/, "").endsWith("/en"));
   const rootPlain = await fetch(`${BASE}/`);
