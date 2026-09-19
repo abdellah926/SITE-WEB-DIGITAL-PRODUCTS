@@ -93,6 +93,8 @@ async function main() {
   check("e2e: english home gallery shows english title", enHomeText.includes("Crochet Afghan Blanket Pattern"));
   const rootEn = await fetch(`${BASE}/`, { headers: { Cookie: "NEXT_LOCALE=en" } });
   check("e2e: root follows cookie to english", rootEn.url.replace(/\/?$/, "").endsWith("/en"));
+  const rootPlain = await fetch(`${BASE}/`);
+  check("e2e: root defaults to english", rootPlain.url.replace(/\/?$/, "").endsWith("/en"));
   const arMidEn = await fetch(`${BASE}/ar/products`, { headers: { Cookie: "NEXT_LOCALE=en" } });
   check("e2e: ar page follows cookie to english", arMidEn.url.replace(/\/?$/, "").endsWith("/en/products"));
 

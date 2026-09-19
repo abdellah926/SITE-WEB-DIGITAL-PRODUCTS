@@ -269,3 +269,11 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 - Note: prod measure — user's "French title on /en" screenshot was stale/cached; live production already served the English title pre-v2.6. Live fetch of `/en/products/crochet-afghan-blanket` shows new copy + trust + "Handmade" (no "Fait main").
 - TDD: 3 new e2e asserts (English description snippet, 🔒+Instant download, Handmade with no "Fait main") red first, green after. Prod E2E on canonical alias **47/47 PASS**, gates green, deployed live (deployment-specific URL is SSO-protected; canonical production alias is public and serves the new build).
 - Test orders cleaned up (dev DB `orders` empty).
+
+## [ENGLISH DEFAULT LANDING — v2.7 · 2026-09-19]
+
+- **English is now the default entry**: `defaultLocale` flipped ar→en in `src/lib/i18n/routing.ts`, and the root fallback in `src/app/page.tsx` (cookie-less → `/en`). New visitors land on the English US-market storefront; العربية/Français stay one click away in the pill switcher, and the `NEXT_LOCALE` cookie lock middleware is unchanged (overrides everything once chosen).
+- TDD: new e2e assert "root defaults to english" failed against the old build (red), passed after deploy (green). Prod E2E **48/48 PASS** on canonical alias, gates green, deployed live. Root probe: `GET /` → **307 /en**.
+- Test orders cleaned up.
+
+---
