@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { getProductBySlug, listCategories } from "@/features/catalog/queries";
-import { WatermarkedImage } from "@/components/watermarked-image";
+import { ProductImages } from "@/components/product-images";
 import { localTitle } from "@/lib/format";
 import { PriceBlock } from "@/components/price";
 import { TrustBlock } from "@/components/trust";
@@ -47,13 +47,7 @@ export default async function ProductPage({
   return (
     <div className="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-10">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <WatermarkedImage
-          src={product.images[0] ?? "/img/crochet-blanket.svg"}
-          alt={title}
-          width={800}
-          height={600}
-          className="w-full rounded-2xl border border-stone-200 object-cover"
-        />
+        <ProductImages key={product.id} images={product.images} title={title} />
         <div className="flex flex-col gap-4">
           {category ? (
             <p className="text-sm text-stone-500">
