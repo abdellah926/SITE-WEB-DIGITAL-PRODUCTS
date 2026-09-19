@@ -227,11 +227,23 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 ## [LOCALE LOCK + NEW PRICING — v2.4 · 2026-09-18]
 
 - **Locale lock via middleware** (`src/middleware.ts`): any request whose `NEXT_LOCALE` cookie is set is forced to that locale — root `/` and even `/ar|/fr|/en` paths redirect to the remembered language. Once you pick a language it sticks across the whole site (home included); `_next/api/d/static` are exempt. Reverting is just clicking another language pill.
-- **Pricing lowered**: every product seeded + live DB row now `priceMAD: 50` (≈ **$5** on English display, ≈ 5 € on ar/fr via the approx converter).
-- Go-live E2E: **47/47 PASS** (incl. cookie-lock on `/`→`/en` and `/ar/products`→`/en/products`, price "≈ $5"). Gates green. Deployed live.
+- Go-live E2E: **47/47 PASS** (incl. cookie-lock on `/`→`/en` and `/ar/products`→`/en/products`). Gates green. Deployed live.
 
 ### STILL OPEN for "worldwide buying"
 - Card payment (CIH/CMI) seam is built (`PAYMENT_PROVIDER=cmi`) but merchant keys/kit still needed to accept real cards; RIB virement remains Morocco/personal-transfer oriented.
+
+---
+
+## [FULL-LANGUAGE PRODUCT CONTENT + USD PRICING — v2.5 · 2026-09-18]
+
+- **English product content (schema migration)**: added `title_en` + `description_en` (products) and seeded/live-updated all 5 products. `localTitle(locale, ar, fr, en="")` now returns English content for `en` (falls back to French when empty); wired through product-card, gallery, detail page (+meta), buy page, rib page, admin products list. Admin product form gained Title/Description (English) fields.
+- **Exact USD pricing (display)**: added `price_usd` (integer cents) as the worldwide display price + kept `price_mad` (integer) as the payment/transfer amount. New shared `PriceBlock` component (`src/components/price.tsx`) renders exact USD (`$4.99`, or `4,99 $US` ar/fr) with the MAD amount as secondary on cards/detail/buy; falls back to MAD+approx when `priceUSD=0`. New `formatUsd` in `src/lib/format.ts`; admin form gains Price (USD).
+- New product prices: blanket **$4.99** (54 MAD), doll **$6.59** (71), scarf **$3.99** (43), basket **$5.49** (59), kit **$7.99** (86).
+- TDD: e2e first failed the 3 new English/USD assertions, then passed after implementation. Prod E2E **44/44 PASS**, gates green, deployed live.
+
+### KNOWN LIMITATIONS / DEBT (registered per protocol 4)
+- Articles are ar/fr only (`locale` column) — English UI shows French articles on `/en` list. Pre-existing design.
+- Web watermark (Geist Latin font) is Latin-only; Arabic names degrade silently (pre-existing).
 
 ### STILL PENDING (operator)
 - `RIB_HOLDER` (account holder name) not set on Vercel — page hides the row while empty.
@@ -245,3 +257,15 @@ File-count guard: each feature targets 4–7 files max; merge before splitting.
 - `formatMAD` maps en→`en` Intl tag (`MAD 350`); new `localTitle(locale, ar, fr)` helper used across product-card/gallery/detail/buy/rib/admin/forms — **English falls back to the French (Roman-script) product content** (schema only stores title/description in ar+fr; documented content limitation).
 - WhatsApp confirm message, CMI `lang`, mock route locale, admin login redirects, order creation, sitemap — all accept `en`.
 - e2e now exercises `/en` + an English rib order (heading "Bank transfer payment"); production E2E **38/38 PASS**. Gates (tsc/eslint/build/selfcheck) green. Deployed live.
+
+---
+
+## [US-MARKET ENGLISH COPY + TRUST BLOCK + ENGLISH CATEGORIES — v2.6 · 2026-09-19]
+
+- **English copy (US-market)**: all 5 titles now end `… Pattern – PDF` / `… Guide – PDF`, and English descriptions were rewritten to sales-ready US-English (blanket uses the user-supplied copy "Create your own beautiful crochet Afghan blanket…", doll/scarf/basket/kit upgraded). Applied in `seed.ts` + live DB.
+- **Trust block (no fake reviews)**: new `src/components/trust.tsx` (async server comp, `getTranslations("product")`), rendered on product detail under the description with exactly 4 factual bullets: 🔒 Secure checkout · ⚡ Instant download · 📄 PDF digital product · ❌ No physical product shipped. NO rating stars / no "Loved by crochet makers" — user forbade fake social proof until there is real evidence.
+- **English categories**: added `categories.name_en` (schema + live `ALTER TABLE … ADD COLUMN name_en`) — Crochet / Handmade / Kits. Wired via `localTitle(…, nameEn)` in product pills, detail category label, admin product form select, admin categories list (`c.name · c.nameFr · c.nameEn`). Admin category form gained Name (English) field; `categorySchema` + save action parse `nameEn`.
+- i18n: added `product.trustSecure/trustInstant/trustPdf/trustNoShip` in ar/fr/en.
+- Note: prod measure — user's "French title on /en" screenshot was stale/cached; live production already served the English title pre-v2.6. Live fetch of `/en/products/crochet-afghan-blanket` shows new copy + trust + "Handmade" (no "Fait main").
+- TDD: 3 new e2e asserts (English description snippet, 🔒+Instant download, Handmade with no "Fait main") red first, green after. Prod E2E on canonical alias **47/47 PASS**, gates green, deployed live (deployment-specific URL is SSO-protected; canonical production alias is public and serves the new build).
+- Test orders cleaned up (dev DB `orders` empty).

@@ -103,6 +103,9 @@ export function ProductForm({
       <Field label={f.titleFr}>
         <input name="titleFr" defaultValue={product?.titleFr} required className={inputCls} />
       </Field>
+      <Field label={f.titleEn}>
+        <input name="titleEn" defaultValue={product?.titleEn} className={inputCls} />
+      </Field>
       <Field label={f.slug}>
         <input name="slug" defaultValue={product?.slug} required pattern="[a-z0-9-]+" className={inputCls} />
       </Field>
@@ -112,15 +115,28 @@ export function ProductForm({
       <Field label={f.descriptionFr}>
         <textarea name="descriptionFr" defaultValue={product?.descriptionFr} required rows={3} className={inputCls} />
       </Field>
+      <Field label={f.descriptionEn}>
+        <textarea name="descriptionEn" defaultValue={product?.descriptionEn} rows={3} className={inputCls} />
+      </Field>
       <Field label={f.price}>
         <input name="priceMAD" type="number" min={0} step={1} defaultValue={product?.priceMAD} required className={inputCls} />
+      </Field>
+      <Field label={f.priceUSD}>
+        <input
+          name="priceUSD"
+          type="number"
+          min={0}
+          step={0.01}
+          defaultValue={product ? (product.priceUSD / 100).toFixed(2) : ""}
+          className={inputCls}
+        />
       </Field>
       <Field label={f.category}>
         <select name="categoryId" defaultValue={product?.categoryId ?? ""} className={inputCls}>
           <option value="">—</option>
           {categories.map((c) => (
             <option key={c.id} value={c.id}>
-              {localTitle(locale, c.name, c.nameFr)}
+              {localTitle(locale, c.name, c.nameFr, c.nameEn)}
             </option>
           ))}
         </select>
@@ -167,6 +183,9 @@ export function CategoryForm({ category }: { category?: Category }) {
       </Field>
       <Field label={f.titleFr}>
         <input name="nameFr" defaultValue={category?.nameFr} required className={inputCls} />
+      </Field>
+      <Field label={f.titleEn}>
+        <input name="nameEn" defaultValue={category?.nameEn} className={inputCls} />
       </Field>
       <Field label={f.slug}>
         <input name="slug" defaultValue={category?.slug} required pattern="[a-z0-9-]+" className={inputCls} />

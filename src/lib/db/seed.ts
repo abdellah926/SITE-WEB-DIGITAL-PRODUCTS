@@ -10,9 +10,9 @@ async function seed(): Promise<void> {
   }
 
   const cats = [
-    { slug: "crochet", name: "كروشي", nameFr: "Crochet", sort: 1 },
-    { slug: "handmade", name: "أعمال يدوية", nameFr: "Fait main", sort: 2 },
-    { slug: "kits", name: "مجموعات", nameFr: "Kits", sort: 3 },
+    { slug: "crochet", name: "كروشي", nameFr: "Crochet", nameEn: "Crochet", sort: 1 },
+    { slug: "handmade", name: "أعمال يدوية", nameFr: "Fait main", nameEn: "Handmade", sort: 2 },
+    { slug: "kits", name: "مجموعات", nameFr: "Kits", nameEn: "Kits", sort: 3 },
   ];
 
   await db.delete(products);
@@ -27,11 +27,15 @@ async function seed(): Promise<void> {
       slug: "crochet-afghan-blanket",
       title: "باترون بطانية كروشي صوفية",
       titleFr: "Patron de couverture au crochet en laine",
+      titleEn: "Crochet Afghan Blanket Pattern – PDF",
       description:
         "باترون PDF مفصّل بالخطوات والرسومات لصنع بطانية كروشي من الصوف الطبيعي بعدة ألوان وتصاميم. مقاس 120×180 سم. يُسلَّم مباشرة بعد الدفع.",
       descriptionFr:
         "Patron PDF détaillé pas à pas pour réaliser une couverture en laine naturelle, plusieurs couleurs et motifs. Taille 120×180 cm. Livré instantanément après paiement.",
-      priceMAD: 50,
+      descriptionEn:
+        "Create your own beautiful crochet Afghan blanket with this detailed step-by-step PDF pattern, in multiple colors and designs. Perfect for crochet lovers and handmade enthusiasts — includes clear diagrams and full stitch instructions. Size 120×180 cm. Instant download after payment.",
+      priceMAD: 54,
+      priceUSD: 499,
       images: ["/img/shop/by-cyrus-1.jpg"],
       categoryId: bySlug["crochet"],
       inStock: true,
@@ -43,11 +47,15 @@ async function seed(): Promise<void> {
       slug: "amigurumi-doll",
       title: "باترون دمية أميغورومي كروشي",
       titleFr: "Patron de poupée amigurumi en crochet",
+      titleEn: "Amigurumi Crochet Doll Pattern – PDF",
       description:
         "باترون PDF كامل مصوّر لصنع دمية أميغورومي لطيفة بإتقان، مناسب كهدية للأطفال.",
       descriptionFr:
         "Patron PDF complet illustré pour réaliser une jolie poupée amigurumi, parfaite en cadeau pour les enfants.",
-      priceMAD: 50,
+      descriptionEn:
+        "Make an adorable amigurumi doll with this complete illustrated PDF pattern — a perfect handmade gift for children. Step-by-step instructions and photos for every stage.",
+      priceMAD: 71,
+      priceUSD: 659,
       images: ["/img/shop/by-cyrus-2.jpg"],
       categoryId: bySlug["crochet"],
       inStock: true,
@@ -59,11 +67,15 @@ async function seed(): Promise<void> {
       slug: "handmade-wool-scarf",
       title: "باترون وشاح صوف مطرز",
       titleFr: "Patron d'écharpe en laine brodée",
+      titleEn: "Embroidered Wool Scarf Pattern",
       description:
         "باترون PDF لنقوش تقليدية راقية على وشاح شتوي دافئ من الصوف.",
       descriptionFr:
         "Patron PDF de motifs traditionnels élégants pour une écharpe d'hiver chaude en laine.",
-      priceMAD: 50,
+      descriptionEn:
+        "Knit a warm winter scarf with elegant traditional motifs using this clear PDF pattern — includes stitch charts, a materials list and finishing tips.",
+      priceMAD: 43,
+      priceUSD: 399,
       images: ["/img/shop/by-cyrus-3.jpg"],
       categoryId: bySlug["handmade"],
       inStock: true,
@@ -75,11 +87,15 @@ async function seed(): Promise<void> {
       slug: "wool-storage-basket",
       title: "باترون سلة تخزين محبوكة",
       titleFr: "Patron de panier de rangement tricoté",
+      titleEn: "Wool Storage Basket Pattern – PDF",
       description:
         "باترون PDF لصنع سلة متينة من خيوط القطن المحبوك للتنظيم والديكور.",
       descriptionFr:
         "Patron PDF pour réaliser un panier robuste en fil de coton tricoté pour le rangement et la décoration.",
-      priceMAD: 50,
+      descriptionEn:
+        "Weave a sturdy, stylish storage basket from cotton rope with this step-by-step PDF pattern — perfect for organizing and decorating any room.",
+      priceMAD: 59,
+      priceUSD: 549,
       images: ["/img/shop/by-cyrus-4.jpg"],
       categoryId: bySlug["handmade"],
       inStock: true,
@@ -91,11 +107,15 @@ async function seed(): Promise<void> {
       slug: "crochet-beginner-kit",
       title: "دليل المبتدئ لتعلّم الكروشي PDF",
       titleFr: "Guide du débutant pour apprendre le crochet (PDF)",
+      titleEn: "Beginner's Guide to Crochet – PDF",
       description:
         "دليل إلكتروني مصوّر خطوة بخطوة: الغرز الأساسية، حل المشاكل الشائعة، وتسعة باترونات سهلة للبدء.",
       descriptionFr:
         "Guide électronique illustré pas à pas : mailles de base, dépannage et neuf patrons faciles pour débuter.",
-      priceMAD: 50,
+      descriptionEn:
+        "Learn to crochet from scratch with this illustrated step-by-step digital guide: basic stitches, troubleshooting, and nine easy patterns to get started.",
+      priceMAD: 86,
+      priceUSD: 799,
       images: ["/img/shop/by-cyrus-5.jpg"],
       categoryId: bySlug["kits"],
       inStock: true,

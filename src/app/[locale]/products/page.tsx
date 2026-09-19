@@ -71,7 +71,7 @@ export default async function ProductsPage({
                 : "border-stone-300 text-stone-600 hover:border-amber-700")
             }
           >
-            {localTitle(locale, c.name, c.nameFr)}
+            {localTitle(locale, c.name, c.nameFr, c.nameEn)}
           </Link>
         ))}
       </nav>

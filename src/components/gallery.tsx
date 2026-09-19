@@ -41,7 +41,7 @@ export async function GalleryMontage({
         {CELLS.map((cell) => {
           const product = cell.slug ? bySlug.get(cell.slug) : null;
           const title = product
-            ? localTitle(locale, product.title, product.titleFr ?? "")
+            ? localTitle(locale, product.title, product.titleFr ?? "", product.titleEn)
             : t("galleryBadge");
           const href = product
             ? `/${locale}/products/${product.slug}`

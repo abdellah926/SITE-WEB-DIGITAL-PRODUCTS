@@ -4,7 +4,9 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { getProductBySlug, listCategories } from "@/features/catalog/queries";
 import { WatermarkedImage } from "@/components/watermarked-image";
-import { approxTotal, formatMAD, localTitle } from "@/lib/format";
+import { localTitle } from "@/lib/format";
+import { PriceBlock } from "@/components/price";
+import { TrustBlock } from "@/components/trust";
 
 export const dynamic = "force-dynamic";
 
@@ -17,8 +19,8 @@ export async function generateMetadata({
   const product = await getProductBySlug(slug);
   if (!product) return { title: "404" };
   return {
-    title: localTitle(locale, product.title, product.titleFr),
-    description: localTitle(locale, product.description, product.descriptionFr),
+    title: localTitle(locale, product.title, product.titleFr, product.titleEn),
+    description: localTitle(locale, product.description, product.descriptionFr, product.descriptionEn),
   };
 }
 
@@ -36,8 +38,8 @@ export default async function ProductPage({
     listCategories(),
   ]);
 
-  const title = localTitle(locale, product.title, product.titleFr);
-  const description = localTitle(locale, product.description, product.descriptionFr);
+  const title = localTitle(locale, product.title, product.titleFr, product.titleEn);
+  const description = localTitle(locale, product.description, product.descriptionFr, product.descriptionEn);
   const category = categories.find((c) => c.id === product.categoryId);
 
   return (
@@ -53,15 +55,13 @@ export default async function ProductPage({
         <div className="flex flex-col gap-4">
           {category ? (
             <p className="text-sm text-stone-500">
-              {t("categoryLabel")}: {localTitle(locale, category.name, category.nameFr)}
+              {t("categoryLabel")}: {localTitle(locale, category.name, category.nameFr, category.nameEn)}
             </p>
           ) : null}
           <h1 className="text-3xl font-bold text-stone-900">{title}</h1>
-          <p className="text-2xl font-bold text-amber-800">
-            {formatMAD(product.priceMAD, locale)}{" "}
-            <span className="text-sm font-normal text-stone-500">{approxTotal(product.priceMAD, locale)}</span>
-          </p>
+          <PriceBlock product={product} locale={locale} big />
           <p className="whitespace-pre-line text-stone-700">{description}</p>
+          <TrustBlock />
 
           {product.inStock && product.fileKey ? (
             <Link

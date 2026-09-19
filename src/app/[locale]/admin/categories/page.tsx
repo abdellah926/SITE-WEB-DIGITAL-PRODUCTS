@@ -32,11 +32,11 @@ export default async function AdminCategoriesPage({
             <li key={c.id} className="flex items-center justify-between gap-4 px-4 py-3">
               <div>
                 <p className="font-medium text-stone-900">
-                  {localTitle(locale, c.name, c.nameFr)}{" "}
+                  {localTitle(locale, c.name, c.nameFr, c.nameEn)}{" "}
                   <span className="text-sm text-stone-400">({c.slug})</span>
                 </p>
                 <p className="text-sm text-stone-500">
-                  {c.name} · {c.nameFr}
+                  {c.name} · {c.nameFr} · {c.nameEn}
                 </p>
               </div>
               <div className="flex shrink-0 items-center gap-3">

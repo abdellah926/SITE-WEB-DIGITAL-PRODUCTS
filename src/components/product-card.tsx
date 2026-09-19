@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { approxTotal, formatMAD, localTitle } from "@/lib/format";
+import { localTitle } from "@/lib/format";
 import type { Product } from "@/lib/db/schema";
 import type { Locale } from "@/lib/i18n/routing";
 import { WatermarkedImage } from "./watermarked-image";
+import { PriceBlock } from "./price";
 
 export function ProductCard({ locale, product }: { locale: Locale; product: Product }) {
-  const title = localTitle(locale, product.title, product.titleFr);
+  const title = localTitle(locale, product.title, product.titleFr, product.titleEn);
   return (
     <Link
       href={`/${locale}/products/${product.slug}`}
@@ -20,10 +21,7 @@ export function ProductCard({ locale, product }: { locale: Locale; product: Prod
       />
       <div className="flex flex-1 flex-col gap-1 p-4">
         <h3 className="font-medium text-stone-900 group-hover:text-amber-800">{title}</h3>
-        <p className="text-sm font-bold text-amber-800">
-          {formatMAD(product.priceMAD, locale)}{" "}
-          <span className="text-xs font-normal text-stone-500">{approxTotal(product.priceMAD, locale)}</span>
-        </p>
+        <PriceBlock product={product} locale={locale} />
       </div>
     </Link>
   );

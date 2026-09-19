@@ -30,10 +30,13 @@ const nullableId = z
 const productSchema = z.object({
   title: required.max(120),
   titleFr: required.max(120),
+  titleEn: z.string().trim().max(120).default(""),
   slug: slugField.max(160),
   description: required.max(3000),
   descriptionFr: required.max(3000),
+  descriptionEn: z.string().trim().max(3000).default(""),
   priceMAD: z.coerce.number().int().min(0).max(100000),
+  priceUSD: z.number().int().min(0).max(10000000).default(0),
   categoryId: nullableId,
   inStock: boolField,
   featured: boolField,
@@ -52,6 +55,7 @@ const categorySchema = z.object({
   slug: slugField.max(120),
   name: required.max(120),
   nameFr: required.max(120),
+  nameEn: z.string().trim().max(120).default(""),
   sort: z.coerce.number().int().min(0).max(9999),
 });
 
@@ -151,10 +155,13 @@ export async function saveProductAction(
   const parsed = productSchema.safeParse({
     title: formData.get("title"),
     titleFr: formData.get("titleFr"),
+    titleEn: formData.get("titleEn") || undefined,
     slug: formData.get("slug"),
     description: formData.get("description"),
     descriptionFr: formData.get("descriptionFr"),
+    descriptionEn: formData.get("descriptionEn") || undefined,
     priceMAD: formData.get("priceMAD"),
+    priceUSD: Math.round((Number(formData.get("priceUSD")) || 0) * 100),
     categoryId: formData.get("categoryId"),
     inStock: formData.get("inStock"),
     featured: formData.get("featured"),
@@ -218,6 +225,7 @@ export async function saveCategoryAction(
     slug: formData.get("slug"),
     name: formData.get("name"),
     nameFr: formData.get("nameFr"),
+    nameEn: formData.get("nameEn") || undefined,
     sort: formData.get("sort"),
   });
   if (!parsed.success) return { error: "required" };

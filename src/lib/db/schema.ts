@@ -13,6 +13,7 @@ export const categories = pgTable("categories", {
   slug: text("slug").notNull().unique(),
   name: text("name").notNull(),
   nameFr: text("name_fr").notNull(),
+  nameEn: text("name_en").notNull().default(""),
   sort: integer("sort").notNull().default(0),
 });
 
@@ -21,9 +22,12 @@ export const products = pgTable("products", {
   slug: text("slug").notNull().unique(),
   title: text("title").notNull(),
   titleFr: text("title_fr").notNull(),
+  titleEn: text("title_en").notNull().default(""),
   description: text("description").notNull(),
   descriptionFr: text("description_fr").notNull(),
+  descriptionEn: text("description_en").notNull().default(""),
   priceMAD: integer("price_mad").notNull(),
+  priceUSD: integer("price_usd").notNull().default(0),
   images: text("images").array().notNull().default([]),
   categoryId: integer("category_id").references(() => categories.id),
   inStock: boolean("in_stock").notNull().default(true),

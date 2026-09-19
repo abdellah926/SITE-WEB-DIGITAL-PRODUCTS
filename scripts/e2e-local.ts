@@ -57,7 +57,7 @@ async function main() {
   check("e2e: rib pay page 200", ribPage.status === 200);
   check("e2e: rib page shows IBAN", ribHtml.includes("MA64 2300 1057 6579 1211 0187 0061"));
   check("e2e: rib page shows RIB", ribHtml.includes("230 010 5765791211018700 61"));
-  check("e2e: rib page shows product title", ribHtml.includes(product.titleFr || product.title));
+  check("e2e: rib page shows product title", ribHtml.includes(product.titleEn || product.titleFr || product.title));
   check("e2e: rib page shows registered buyer name", ribHtml.includes("Test Buyer RIB"));
   check("e2e: rib page english heading", ribHtml.includes("Bank transfer payment"));
   check("e2e: rib page has wa.me confirm link", ribHtml.includes("wa.me/"));
@@ -70,8 +70,9 @@ async function main() {
   const enHome = await fetch(`${BASE}/en`);
   check("e2e: english home 200", enHome.status === 200);
   const enProd = await fetch(`${BASE}/en/products`);
-  await enProd.text();
+  const enProdText = await enProd.text();
   check("e2e: english products 200", enProd.status === 200);
+  check("e2e: english category names on page", enProdText.includes("Handmade") && !enProdText.includes("Fait main"));
   check("e2e: english buy label", (await (await fetch(`${BASE}/en/products/crochet-afghan-blanket`)).text()).includes("Buy now"));
 
   // storefront copy is country-free (global storefront)
@@ -85,7 +86,11 @@ async function main() {
   check("e2e: fr scarf product free of country mention", !frScarf.toLowerCase().includes("marocain"));
   check("e2e: prices show approx usd/eur", frHome.includes("≈ ") || enHomeText.includes("≈ $"));
   const enBlanket = await (await fetch(`${BASE}/en/products/crochet-afghan-blanket`)).text();
-  check("e2e: price approx is 5 usd", enBlanket.includes("≈ $5"));
+  check("e2e: english product shows exact usd price", enBlanket.includes("$4.99"));
+  check("e2e: english product shows english title", enBlanket.includes("Crochet Afghan Blanket Pattern"));
+  check("e2e: english product shows english description", enBlanket.includes("Create your own beautiful crochet Afghan blanket"));
+  check("e2e: english product shows trust block", enBlanket.includes("🔒") && enBlanket.includes("Instant download"));
+  check("e2e: english home gallery shows english title", enHomeText.includes("Crochet Afghan Blanket Pattern"));
   const rootEn = await fetch(`${BASE}/`, { headers: { Cookie: "NEXT_LOCALE=en" } });
   check("e2e: root follows cookie to english", rootEn.url.replace(/\/?$/, "").endsWith("/en"));
   const arMidEn = await fetch(`${BASE}/ar/products`, { headers: { Cookie: "NEXT_LOCALE=en" } });

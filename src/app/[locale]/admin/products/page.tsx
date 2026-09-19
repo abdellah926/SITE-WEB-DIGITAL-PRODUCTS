@@ -39,7 +39,7 @@ export default async function AdminProductsPage({
             <li key={p.id} className="flex items-center justify-between gap-4 px-4 py-3">
               <div className="min-w-0">
                 <p className="truncate font-medium text-stone-900">
-                  {localTitle(locale, p.title, p.titleFr)}
+                  {localTitle(locale, p.title, p.titleFr, p.titleEn)}
                 </p>
                 <p className="text-sm text-stone-500">
                   {formatMAD(p.priceMAD, locale)} ·{" "}

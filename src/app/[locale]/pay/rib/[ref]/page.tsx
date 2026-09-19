@@ -26,7 +26,7 @@ export default async function RibPayPage({
   const priceText = formatMAD(order.totalMAD, locale);
   const product = item?.productId ? await getProductById(item.productId) : null;
   const productTitle =
-    product ? localTitle(locale, product.title, product.titleFr) : item?.title ?? "";
+    product ? localTitle(locale, product.title, product.titleFr, product.titleEn) : item?.title ?? "";
 
   return (
     <div className="mx-auto flex max-w-2xl flex-col gap-6 px-4 py-10">

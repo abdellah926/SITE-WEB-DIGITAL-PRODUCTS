@@ -10,6 +10,16 @@ export function formatMAD(amount: number, locale: string): string {
 const MAD_PER_USD = 10;
 const MAD_PER_EUR = 11;
 
+export function formatUsd(cents: number, locale: string): string {
+  const tag = locale === "en" ? "en-US" : "fr-MA";
+  return new Intl.NumberFormat(tag, {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(cents / 100);
+}
+
 export function approxTotal(value: number, locale: string): string {
   const nf = new Intl.NumberFormat(locale === "en" ? "en-US" : "fr-MA", {
     maximumFractionDigits: 0,
@@ -19,8 +29,10 @@ export function approxTotal(value: number, locale: string): string {
   return `≈ ${nf.format(value / MAD_PER_EUR)} €`;
 }
 
-export function localTitle(locale: string, ar: string, fr: string): string {
-  return locale === "ar" ? ar : fr;
+export function localTitle(locale: string, ar: string, fr: string, en = ""): string {
+  if (locale === "ar") return ar;
+  if (locale === "en") return en || fr;
+  return fr;
 }
 
 export function slugify(input: string): string {
