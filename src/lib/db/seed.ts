@@ -116,7 +116,7 @@ async function seed(): Promise<void> {
         "Learn to crochet from scratch with this illustrated step-by-step digital guide: basic stitches, troubleshooting, and nine easy patterns to get started.",
       priceMAD: 86,
       priceUSD: 799,
-      images: ["/img/shop/by-cyrus-11.jpg"],
+      images: ["/img/shop/by-cyrus-5.jpg"],
       categoryId: bySlug["kits"],
       inStock: true,
       featured: true,

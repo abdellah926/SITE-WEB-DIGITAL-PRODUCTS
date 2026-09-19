@@ -89,7 +89,7 @@ async function main() {
   const enBlanket = await (await fetch(`${BASE}/en/products/crochet-afghan-blanket`)).text();
   check("e2e: english product shows exact usd price", enBlanket.includes("$4.99"));
   check("e2e: english product shows english title", enBlanket.includes("Crochet Afghan Blanket Pattern"));
-  check("e2e: english product uses new cyrus image", enBlanket.includes("by-cyrus-10.jpg"));
+  check("e2e: english product shows product image", enBlanket.includes("by-cyrus-1.jpg"));
   check("e2e: english product shows english description", enBlanket.includes("Create your own beautiful crochet Afghan blanket"));
   check("e2e: english product shows trust block", enBlanket.includes("🔒") && enBlanket.includes("Instant download"));
   check("e2e: english product shows spec + digital badge", enBlanket.includes("DIGITAL PRODUCT") && enBlanket.includes("What's included") && enBlanket.includes("Perfect for"));
@@ -101,7 +101,7 @@ async function main() {
   check("e2e: bundle product live", enBundle.includes("Complete Crochet Patterns Bundle") && enBundle.includes("$19.99") && enBundle.includes("by-cyrus-12.jpg"));
   check("e2e: bundle visible in products list", enProdText.includes("Complete Crochet Patterns Bundle"));
   check("e2e: bundle on home gallery", enHomeText.includes("Complete Crochet Patterns Bundle"));
-  check("e2e: home gallery uses new cyrus images", enHomeText.includes("by-cyrus-12.jpg") && !enHomeText.includes("by-cyrus-2.jpg"));
+  check("e2e: home gallery uses classic cyrus images", enHomeText.includes("by-cyrus-6.jpg") && !enHomeText.includes("by-cyrus-7.jpg"));
   const rootEn = await fetch(`${BASE}/`, { headers: { Cookie: "NEXT_LOCALE=en" } });
   check("e2e: root follows cookie to english", rootEn.url.replace(/\/?$/, "").endsWith("/en"));
   const rootPlain = await fetch(`${BASE}/`);
