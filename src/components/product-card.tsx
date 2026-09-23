@@ -6,6 +6,8 @@ import { ProductImages } from "./product-images";
 import { PriceBlock } from "./price";
 
 export function ProductCard({ locale, product }: { locale: Locale; product: Product }) {
+  // These cards were consolidated into the guide and scarf galleries.
+  if (["amigurumi-doll", "wool-storage-basket"].includes(product.slug)) return null;
   const title = localTitle(locale, product.title, product.titleFr, product.titleEn);
   return (
     <article
