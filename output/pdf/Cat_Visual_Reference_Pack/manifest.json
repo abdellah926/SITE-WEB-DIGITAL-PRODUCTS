@@ -1,0 +1,83 @@
+{
+  "id": "CAT-VISUAL-01",
+  "views": [
+    {
+      "number": "01",
+      "title": "Front",
+      "board": "01_main_views.png",
+      "quadrant": 0
+    },
+    {
+      "number": "02",
+      "title": "Side profile - facing left",
+      "board": "01_main_views.png",
+      "quadrant": 1
+    },
+    {
+      "number": "03",
+      "title": "Back",
+      "board": "01_main_views.png",
+      "quadrant": 2
+    },
+    {
+      "number": "04",
+      "title": "Side profile - facing right",
+      "board": "01_main_views.png",
+      "quadrant": 3
+    },
+    {
+      "number": "05",
+      "title": "Front three-quarter",
+      "board": "02_extra_angles.png",
+      "quadrant": 0
+    },
+    {
+      "number": "06",
+      "title": "Rear three-quarter",
+      "board": "02_extra_angles.png",
+      "quadrant": 1
+    },
+    {
+      "number": "07",
+      "title": "Elevated crown view",
+      "board": "02_extra_angles.png",
+      "quadrant": 2
+    },
+    {
+      "number": "08",
+      "title": "Underside concept",
+      "board": "02_extra_angles.png",
+      "quadrant": 3
+    },
+    {
+      "number": "09",
+      "title": "Face and embroidery",
+      "board": "03_close_details.png",
+      "quadrant": 0
+    },
+    {
+      "number": "10",
+      "title": "Ear detail",
+      "board": "03_close_details.png",
+      "quadrant": 1
+    },
+    {
+      "number": "11",
+      "title": "Front paws",
+      "board": "03_close_details.png",
+      "quadrant": 2
+    },
+    {
+      "number": "12",
+      "title": "Tail and back detail",
+      "board": "03_close_details.png",
+      "quadrant": 3
+    }
+  ],
+  "pdf_pages": 13,
+  "image_files": 3,
+  "format": "Three four-panel PNG boards plus 12 individual-view PDF pages and cover",
+  "generator": "Built-in image_gen",
+  "reference": "User supplied CYRUS7.png",
+  "status": "AI-generated visual references, not a crochet pattern"
+}

@@ -1,0 +1,15 @@
+{
+  "tables_checked": [
+    "HEAD",
+    "BODY",
+    "LEGS",
+    "ARMS"
+  ],
+  "additional_checks": [
+    "9-stitch decrease to 8 for paired seam",
+    "32-stitch jacket row",
+    "17-position camera bridge",
+    "camera bridge row 34"
+  ],
+  "physical_test": false
+}

@@ -1,0 +1,358 @@
+[
+  {
+    "file": "01_Characters_and_Dolls_TEST_DRAFT_v0.2.pdf",
+    "pages": 14,
+    "status": "UNTESTED DEVELOPMENT DRAFT",
+    "page_checks": [
+      {
+        "page": 1,
+        "characters": 885
+      },
+      {
+        "page": 2,
+        "characters": 2430
+      },
+      {
+        "page": 3,
+        "characters": 1797
+      },
+      {
+        "page": 4,
+        "characters": 1219
+      },
+      {
+        "page": 5,
+        "characters": 722
+      },
+      {
+        "page": 6,
+        "characters": 703
+      },
+      {
+        "page": 7,
+        "characters": 1121
+      },
+      {
+        "page": 8,
+        "characters": 973
+      },
+      {
+        "page": 9,
+        "characters": 1199
+      },
+      {
+        "page": 10,
+        "characters": 1288
+      },
+      {
+        "page": 11,
+        "characters": 1644
+      },
+      {
+        "page": 12,
+        "characters": 749
+      },
+      {
+        "page": 13,
+        "characters": 1151
+      },
+      {
+        "page": 14,
+        "characters": 1471
+      }
+    ]
+  },
+  {
+    "file": "02_Phone_Covers_TEST_DRAFT_v0.2.pdf",
+    "pages": 13,
+    "status": "UNTESTED DEVELOPMENT DRAFT",
+    "page_checks": [
+      {
+        "page": 1,
+        "characters": 882
+      },
+      {
+        "page": 2,
+        "characters": 2430
+      },
+      {
+        "page": 3,
+        "characters": 1978
+      },
+      {
+        "page": 4,
+        "characters": 1059
+      },
+      {
+        "page": 5,
+        "characters": 1517
+      },
+      {
+        "page": 6,
+        "characters": 773
+      },
+      {
+        "page": 7,
+        "characters": 1258
+      },
+      {
+        "page": 8,
+        "characters": 1339
+      },
+      {
+        "page": 9,
+        "characters": 1262
+      },
+      {
+        "page": 10,
+        "characters": 1153
+      },
+      {
+        "page": 11,
+        "characters": 1305
+      },
+      {
+        "page": 12,
+        "characters": 1386
+      },
+      {
+        "page": 13,
+        "characters": 1471
+      }
+    ]
+  },
+  {
+    "file": "03_Beginner_Cat_and_Panda_TEST_DRAFT_v0.2.pdf",
+    "pages": 13,
+    "status": "UNTESTED DEVELOPMENT DRAFT",
+    "page_checks": [
+      {
+        "page": 1,
+        "characters": 943
+      },
+      {
+        "page": 2,
+        "characters": 2430
+      },
+      {
+        "page": 3,
+        "characters": 1797
+      },
+      {
+        "page": 4,
+        "characters": 931
+      },
+      {
+        "page": 5,
+        "characters": 1407
+      },
+      {
+        "page": 6,
+        "characters": 571
+      },
+      {
+        "page": 7,
+        "characters": 557
+      },
+      {
+        "page": 8,
+        "characters": 766
+      },
+      {
+        "page": 9,
+        "characters": 1243
+      },
+      {
+        "page": 10,
+        "characters": 961
+      },
+      {
+        "page": 11,
+        "characters": 937
+      },
+      {
+        "page": 12,
+        "characters": 1751
+      },
+      {
+        "page": 13,
+        "characters": 1471
+      }
+    ]
+  },
+  {
+    "file": "04_Complete_Collection_TEST_DRAFT_v0.2.pdf",
+    "pages": 42,
+    "status": "UNTESTED DEVELOPMENT DRAFT",
+    "page_checks": [
+      {
+        "page": 1,
+        "characters": 913
+      },
+      {
+        "page": 2,
+        "characters": 960
+      },
+      {
+        "page": 3,
+        "characters": 885
+      },
+      {
+        "page": 4,
+        "characters": 2430
+      },
+      {
+        "page": 5,
+        "characters": 1797
+      },
+      {
+        "page": 6,
+        "characters": 1219
+      },
+      {
+        "page": 7,
+        "characters": 722
+      },
+      {
+        "page": 8,
+        "characters": 703
+      },
+      {
+        "page": 9,
+        "characters": 1121
+      },
+      {
+        "page": 10,
+        "characters": 973
+      },
+      {
+        "page": 11,
+        "characters": 1199
+      },
+      {
+        "page": 12,
+        "characters": 1288
+      },
+      {
+        "page": 13,
+        "characters": 1644
+      },
+      {
+        "page": 14,
+        "characters": 749
+      },
+      {
+        "page": 15,
+        "characters": 1151
+      },
+      {
+        "page": 16,
+        "characters": 1471
+      },
+      {
+        "page": 17,
+        "characters": 882
+      },
+      {
+        "page": 18,
+        "characters": 2430
+      },
+      {
+        "page": 19,
+        "characters": 1978
+      },
+      {
+        "page": 20,
+        "characters": 1059
+      },
+      {
+        "page": 21,
+        "characters": 1517
+      },
+      {
+        "page": 22,
+        "characters": 773
+      },
+      {
+        "page": 23,
+        "characters": 1258
+      },
+      {
+        "page": 24,
+        "characters": 1339
+      },
+      {
+        "page": 25,
+        "characters": 1262
+      },
+      {
+        "page": 26,
+        "characters": 1153
+      },
+      {
+        "page": 27,
+        "characters": 1305
+      },
+      {
+        "page": 28,
+        "characters": 1386
+      },
+      {
+        "page": 29,
+        "characters": 1471
+      },
+      {
+        "page": 30,
+        "characters": 943
+      },
+      {
+        "page": 31,
+        "characters": 2430
+      },
+      {
+        "page": 32,
+        "characters": 1797
+      },
+      {
+        "page": 33,
+        "characters": 931
+      },
+      {
+        "page": 34,
+        "characters": 1407
+      },
+      {
+        "page": 35,
+        "characters": 571
+      },
+      {
+        "page": 36,
+        "characters": 557
+      },
+      {
+        "page": 37,
+        "characters": 766
+      },
+      {
+        "page": 38,
+        "characters": 1243
+      },
+      {
+        "page": 39,
+        "characters": 961
+      },
+      {
+        "page": 40,
+        "characters": 937
+      },
+      {
+        "page": 41,
+        "characters": 1751
+      },
+      {
+        "page": 42,
+        "characters": 1471
+      }
+    ]
+  }
+]

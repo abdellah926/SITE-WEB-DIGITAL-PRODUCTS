@@ -1,0 +1,24 @@
+GENERATOR: Built-in image_gen. Reference: user-supplied CYRUS7.png.
+
+BOARD 1 / MAIN VIEWS
+Create one high-resolution 2x2 photographic-style board of the same seated grey
+tabby crochet plush, four full-object views: front, left-facing side, back,
+right-facing side. Preserve large grey head, cream inverted-V muzzle and chest,
+four cream paws, pink ears and nose, glossy black eyes, black embroidered
+whiskers, charcoal stripes, red collar and one front gold bell. Tail on anatomical
+left. Warm ivory studio background, soft lighting, thin white gutters. No text,
+props, hands or instructions. Unseen surfaces are plausible interpretations.
+
+BOARD 2 / EXTRA ANGLES
+Use original plus board 1 as visual references. Same object, colours, texture
+and studio setup. Four views: front three-quarter, rear three-quarter, overhead,
+underside. No pink paw pads or extra limbs. No text or process steps.
+QA: the overhead output is an elevated crown view, so it is labelled accordingly.
+
+BOARD 3 / CLOSE DETAILS
+Use original plus board 1 as visual references. Four closeups: face and embroidery,
+one pink-centred grey ear and its attachment, both front cream paws with toe
+lines, striped tail and lower-back attachment. Thin white gutters, ivory studio,
+no text, hands, needles, extra accessories or claimed construction steps.
+
+All boards are AI visual interpretations; they are not sampled crochet results.

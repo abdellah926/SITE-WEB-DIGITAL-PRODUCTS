@@ -1,0 +1,9 @@
+{
+  "verified_tables": [
+    "HEAD",
+    "BODY",
+    "LEGS",
+    "ARMS"
+  ],
+  "note": "Arithmetic only. No physical sample or fit verification."
+}

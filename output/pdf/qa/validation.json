@@ -1,0 +1,310 @@
+[
+  {
+    "file": "01_Characters_and_Dolls_TEST_DRAFT_v0.1.pdf",
+    "pages": 12,
+    "status": "UNTESTED DEVELOPMENT DRAFT",
+    "page_checks": [
+      {
+        "page": 1,
+        "characters": 793
+      },
+      {
+        "page": 2,
+        "characters": 2243
+      },
+      {
+        "page": 3,
+        "characters": 1796
+      },
+      {
+        "page": 4,
+        "characters": 906
+      },
+      {
+        "page": 5,
+        "characters": 647
+      },
+      {
+        "page": 6,
+        "characters": 628
+      },
+      {
+        "page": 7,
+        "characters": 820
+      },
+      {
+        "page": 8,
+        "characters": 1525
+      },
+      {
+        "page": 9,
+        "characters": 1116
+      },
+      {
+        "page": 10,
+        "characters": 1412
+      },
+      {
+        "page": 11,
+        "characters": 1448
+      },
+      {
+        "page": 12,
+        "characters": 1471
+      }
+    ]
+  },
+  {
+    "file": "02_Phone_Covers_TEST_DRAFT_v0.1.pdf",
+    "pages": 11,
+    "status": "UNTESTED DEVELOPMENT DRAFT",
+    "page_checks": [
+      {
+        "page": 1,
+        "characters": 790
+      },
+      {
+        "page": 2,
+        "characters": 2243
+      },
+      {
+        "page": 3,
+        "characters": 1717
+      },
+      {
+        "page": 4,
+        "characters": 1838
+      },
+      {
+        "page": 5,
+        "characters": 1418
+      },
+      {
+        "page": 6,
+        "characters": 1108
+      },
+      {
+        "page": 7,
+        "characters": 1050
+      },
+      {
+        "page": 8,
+        "characters": 933
+      },
+      {
+        "page": 9,
+        "characters": 1129
+      },
+      {
+        "page": 10,
+        "characters": 1220
+      },
+      {
+        "page": 11,
+        "characters": 1471
+      }
+    ]
+  },
+  {
+    "file": "03_Beginner_Cat_and_Panda_TEST_DRAFT_v0.1.pdf",
+    "pages": 11,
+    "status": "UNTESTED DEVELOPMENT DRAFT",
+    "page_checks": [
+      {
+        "page": 1,
+        "characters": 851
+      },
+      {
+        "page": 2,
+        "characters": 2243
+      },
+      {
+        "page": 3,
+        "characters": 1796
+      },
+      {
+        "page": 4,
+        "characters": 804
+      },
+      {
+        "page": 5,
+        "characters": 1217
+      },
+      {
+        "page": 6,
+        "characters": 496
+      },
+      {
+        "page": 7,
+        "characters": 482
+      },
+      {
+        "page": 8,
+        "characters": 1541
+      },
+      {
+        "page": 9,
+        "characters": 1393
+      },
+      {
+        "page": 10,
+        "characters": 1528
+      },
+      {
+        "page": 11,
+        "characters": 1471
+      }
+    ]
+  },
+  {
+    "file": "04_Complete_Collection_TEST_DRAFT_v0.1.pdf",
+    "pages": 36,
+    "status": "UNTESTED DEVELOPMENT DRAFT",
+    "page_checks": [
+      {
+        "page": 1,
+        "characters": 821
+      },
+      {
+        "page": 2,
+        "characters": 960
+      },
+      {
+        "page": 3,
+        "characters": 793
+      },
+      {
+        "page": 4,
+        "characters": 2243
+      },
+      {
+        "page": 5,
+        "characters": 1796
+      },
+      {
+        "page": 6,
+        "characters": 906
+      },
+      {
+        "page": 7,
+        "characters": 647
+      },
+      {
+        "page": 8,
+        "characters": 628
+      },
+      {
+        "page": 9,
+        "characters": 820
+      },
+      {
+        "page": 10,
+        "characters": 1525
+      },
+      {
+        "page": 11,
+        "characters": 1116
+      },
+      {
+        "page": 12,
+        "characters": 1412
+      },
+      {
+        "page": 13,
+        "characters": 1448
+      },
+      {
+        "page": 14,
+        "characters": 1471
+      },
+      {
+        "page": 15,
+        "characters": 790
+      },
+      {
+        "page": 16,
+        "characters": 2243
+      },
+      {
+        "page": 17,
+        "characters": 1717
+      },
+      {
+        "page": 18,
+        "characters": 1838
+      },
+      {
+        "page": 19,
+        "characters": 1418
+      },
+      {
+        "page": 20,
+        "characters": 1108
+      },
+      {
+        "page": 21,
+        "characters": 1050
+      },
+      {
+        "page": 22,
+        "characters": 933
+      },
+      {
+        "page": 23,
+        "characters": 1129
+      },
+      {
+        "page": 24,
+        "characters": 1220
+      },
+      {
+        "page": 25,
+        "characters": 1471
+      },
+      {
+        "page": 26,
+        "characters": 851
+      },
+      {
+        "page": 27,
+        "characters": 2243
+      },
+      {
+        "page": 28,
+        "characters": 1796
+      },
+      {
+        "page": 29,
+        "characters": 804
+      },
+      {
+        "page": 30,
+        "characters": 1217
+      },
+      {
+        "page": 31,
+        "characters": 496
+      },
+      {
+        "page": 32,
+        "characters": 482
+      },
+      {
+        "page": 33,
+        "characters": 1541
+      },
+      {
+        "page": 34,
+        "characters": 1393
+      },
+      {
+        "page": 35,
+        "characters": 1528
+      },
+      {
+        "page": 36,
+        "characters": 1471
+      }
+    ]
+  }
+]
